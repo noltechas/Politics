@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -87,15 +88,36 @@ public class GameScreen extends Application {
             Label cityLabel = new Label(cityName);
             cityLabel.setFont(new Font("Ancient", 32));
 
-            // Position the label according to the city's coordinates
-            cityLabel.setTranslateX(city.getX() - screenBounds.getWidth() / 2);
-            cityLabel.setTranslateY(city.getY() - screenBounds.getHeight() / 2);
+            // Get the party with most support in the city
+            Party mostSupportedParty = null;
+            for (Party party : GameMap.parties)
+                if (mostSupportedParty == null || party.getSupportPercentage(city) > mostSupportedParty.getSupportPercentage(city)) {
+                    mostSupportedParty = party;
+                }
+
+            /// Create a text for the city name instead of a label
+            Text cityText = new Text(cityName);
+            cityText.setFont(new Font("Ancient", 32));
+
+            // Set the color of the text to the color of the party with most support
+            if (mostSupportedParty != null) {
+                cityText.setFill(mostSupportedParty.getColor());
+            }
+
+            // Add a stroke
+            cityText.setStroke(Color.BLACK);
+            cityText.setStrokeWidth(0.7);  // Adjust the stroke width as necessary
+
+            // Position the text according to the city's coordinates
+            cityText.setTranslateX(city.getX() - screenBounds.getWidth() / 2);
+            cityText.setTranslateY(city.getY() - screenBounds.getHeight() / 2);
 
             // Set on click event
-            cityLabel.setOnMouseClicked(e -> new CityStatsDisplay(city).displayCityStats());
+            cityText.setOnMouseClicked(e -> new CityStatsDisplay(city).displayCityStats());
 
-            // Add the label to the root pane
-            root.getChildren().add(cityLabel);
+            // Add the text to the root pane
+            root.getChildren().add(cityText);
+
 
             // Draw a red star for the capitol
             if (city == capitol) {

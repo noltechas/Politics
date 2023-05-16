@@ -53,7 +53,7 @@ public class CityStatsDisplay {
         else
             cityName = new Text("Capitol City of " + city.getName());
         cityName.setFont(OldLondon);
-        cityName.setFill(Color.DARKBLUE);
+        cityName.setFill(Color.DARKGRAY);
         pane.setTop(cityName);
         BorderPane.setAlignment(cityName, Pos.CENTER);
 
@@ -86,13 +86,18 @@ public class CityStatsDisplay {
         partyStatsBox.setSpacing(10);
 
         ArrayList<Party> topParties = (ArrayList<Party>) city.getTopParties(15);
+        int counter = 0;
         for (Party party : topParties) {
             double support = party.getSupportPercentage(city);
             String formattedSupport = String.format("%.1f", support);
             Label partyLabel = new Label(party.getName() + ": " + formattedSupport + "%");
             partyLabel.setFont(Deutsch);
-            partyLabel.setTextFill(party.getColor());
+            if(counter == 0)
+                partyLabel.setTextFill(Color.GOLDENROD);
+            else
+                partyLabel.setTextFill(party.getColor());
             partyStatsBox.getChildren().add(partyLabel);
+            counter++;
         }
 
         pane.setRight(partyStatsBox);
