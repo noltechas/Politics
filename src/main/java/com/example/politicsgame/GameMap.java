@@ -5,7 +5,7 @@ import java.util.*;
 public class GameMap {
     private static ArrayList<City> cities = new ArrayList<>();
     private static String kingdomName = "";
-    ArrayList<Party> parties = new ArrayList<>();
+    static ArrayList<Party> parties = new ArrayList<>();
     private static final List<String> partyNames = Arrays.asList(
             "The Freedom Party", "The Liberty Party", "The Justice Party", "The Equality Party",
             "The People's Party", "The Unity Party", "The Progress Party", "The Peace Party",
@@ -33,6 +33,10 @@ public class GameMap {
 
     public static String getKingdomName() {
         return kingdomName;
+    }
+
+    public static void addParty(Party userParty) {
+        parties.add(userParty);
     }
 
     private void createCities() {
