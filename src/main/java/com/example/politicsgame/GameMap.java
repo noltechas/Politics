@@ -5,7 +5,8 @@ import java.util.*;
 public class GameMap {
     private static ArrayList<City> cities = new ArrayList<>();
     private static String kingdomName = "";
-    static ArrayList<Party> parties = new ArrayList<>();
+    private static GameMap instance;
+    public static ArrayList<Party> parties = new ArrayList<>();
     private static final List<String> partyNames = Arrays.asList(
             "The Freedom Party", "The Liberty Party", "The Justice Party", "The Equality Party",
             "The People's Party", "The Unity Party", "The Progress Party", "The Peace Party",
@@ -35,13 +36,23 @@ public class GameMap {
         return kingdomName;
     }
 
-    public static void addParty(Party userParty) {
-        parties.add(userParty);
+    public static void addParty(Party party) {
+        parties.add(party);
     }
+
+    public static GameMap getInstance() {
+        if (instance == null) {
+            instance = new GameMap();
+        }
+        return instance;
+    }
+
 
     private void createCities() {
         setKingdomName();
-        createParties(15);
+        createParties(12);
+        for(int i = 0; i < parties.size(); i++)
+            System.out.println(parties.get(i).getName());
         City city1 = new City(0, 290, 170, parties);
         City city2 = new City(1, 200, 325, parties);
         City city3 = new City(2, 300, 470, parties);
@@ -182,8 +193,9 @@ public class GameMap {
             Party party = new Party(name);
             parties.add(party);
         }
+        parties.add(Main.party);
 
-        this.parties = parties;
+        GameMap.parties.addAll(parties);
     }
 
     public static List<City> shortestPath(City start, City end) {

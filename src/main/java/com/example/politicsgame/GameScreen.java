@@ -26,11 +26,11 @@ public class GameScreen extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Retrieve the party name from the main class
-        String partyName = Main.partyName;
+        String partyName = Main.party.getName();
 
         // Initialize the player's party
         Party playerParty = new Party(partyName);
-        GameMap gameMap = new GameMap();
+        GameMap gameMap = GameMap.getInstance();
         GameState gameState = new GameState();
 
         primaryStage.setTitle("Map Display");
