@@ -2,6 +2,9 @@ package com.example.politicsgame;
 
 import com.example.politicsgame.Events.Event;
 import com.example.politicsgame.Events.EventReader;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -19,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,6 +40,7 @@ public class GameScreen extends Application {
     private TextArea eventTextArea; // Updated: Declared as an instance variable
     private ImageView nextButton; // Updated: Declared as an instance variable
     private StackPane root; // Updated: Declared as an instance variable
+    private City affectedCity; // Updated: Declared as an instance variable
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -208,17 +213,27 @@ public class GameScreen extends Application {
             ArrayList<City> cities = GameMap.getCities();
             City randomCity = getRandomCity(cities);
             event.setCityName(randomCity.getName());
+            event.setLocation(randomCity.getName()); // Update the location string with the random city's name
             createExclamationMark(randomCity); // Create exclamation mark for random city
         }
 
-        // Append the city name to the description if applicable
-        String cityName = event.getCityName();
-        if (cityName != null) {
-            description += cityName;
+        // Append the location to the description if applicable
+        String location = event.getLocation();
+        if (location != null) {
+            description += location;
         }
 
         // Display the updated description
         eventTextArea.appendText(description + "\n");
+
+        // Create a pause transition for the delay
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(e -> {
+            // Display the event window after the delay
+            EventWindow eventWindow = new EventWindow(event);
+            eventWindow.displayWindow();
+        });
+        delay.play();
     }
 
     private City getRandomCity(ArrayList<City> cities) {
@@ -237,7 +252,6 @@ public class GameScreen extends Application {
         exclamationMark.setTranslateY(city.getY() - root.getScene().getHeight() / 2 - 40); // Adjust as necessary
         root.getChildren().add(exclamationMark);
     }
-
 
     public static void main(String[] args) {
         launch(args);
