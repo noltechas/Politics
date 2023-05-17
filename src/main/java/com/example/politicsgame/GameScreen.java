@@ -5,9 +5,13 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
@@ -55,6 +59,21 @@ public class GameScreen extends Application {
         // Create a layout and add the ImageView to it
         StackPane root = new StackPane();
         root.getChildren().add(imageView);
+
+        // Create a VBox container for the text area
+        VBox textBoxContainer = new VBox();
+        textBoxContainer.setTranslateX(-564); // Adjust the X coordinate as necessary
+        textBoxContainer.setTranslateY(screenBounds.getHeight() - 10 - 200); // Adjust the Y coordinate as necessary
+        textBoxContainer.setSpacing(10); // Adjust the spacing between elements as necessary
+        // Set the maximum width of the textBoxContainer
+        textBoxContainer.setMaxWidth(300); // Adjust the width as necessary
+
+        // Create a TextArea for displaying current events
+        TextArea eventTextArea = new TextArea();
+        eventTextArea.setEditable(false);
+        eventTextArea.setPrefWidth(10); // Adjust the width as necessary
+        eventTextArea.setPrefRowCount(10); // Set the number of visible rows
+        eventTextArea.setWrapText(true); // Enable text wrapping
 
         // Get cities from GameMap
         ArrayList<City> cities = GameMap.getCities();
@@ -118,7 +137,6 @@ public class GameScreen extends Application {
             // Add the text to the root pane
             root.getChildren().add(cityText);
 
-
             // Draw a red star for the capitol
             if (city == capitol) {
                 Polygon star = createStar(Color.MAROON, 17, 6, 0.5);
@@ -127,6 +145,22 @@ public class GameScreen extends Application {
                 root.getChildren().add(star);
             }
         }
+
+        Image nextButtonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/next.png")));
+        ImageView nextButton = new ImageView(nextButtonImage);
+        nextButton.setTranslateX(637); // Adjust the X coordinate as necessary
+        nextButton.setTranslateY(screenBounds.getHeight() - nextButtonImage.getHeight() + 100); // Adjust the Y coordinate as necessary
+        nextButton.setFitWidth(130);
+        nextButton.setFitHeight(130);
+        nextButton.setOnMouseClicked(e -> {
+            eventTextArea.appendText("\nNext turn!");
+        });
+        root.getChildren().add(nextButton);
+
+        textBoxContainer.getChildren().add(eventTextArea);
+        root.getChildren().add(textBoxContainer);
+        // Example of updating the text field with current events
+        eventTextArea.setText("New event occurred!"); // Replace this with your logic to update the text area based on game events
 
         // Create a scene and add the layout to it
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());

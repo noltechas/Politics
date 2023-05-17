@@ -27,6 +27,7 @@ public class SetupScreen extends Application {
             if (!partyName.trim().isEmpty()) {
                 Party userParty = new Party(partyName);
                 Main.party = userParty;
+                GameState.setPlayerParty(userParty);
                 GameMap gameMap = GameMap.getInstance();
                 System.out.println(GameMap.parties.size());
                 try {

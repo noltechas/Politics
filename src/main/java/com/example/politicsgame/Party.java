@@ -34,11 +34,23 @@ public class Party {
     // Generate a random color for this party
     private Color generateRandomColor() {
         Random random = new Random();
-        float r = random.nextFloat();
-        float g = random.nextFloat();
-        float b = random.nextFloat();
+        float minBrightness = 0.2f; // Minimum brightness value
+        float maxBrightness = 0.9f; // Maximum brightness value
+
+        float r, g, b;
+        do {
+            r = random.nextFloat();
+            g = random.nextFloat();
+            b = random.nextFloat();
+        } while (calculateBrightness(r, g, b) < minBrightness || calculateBrightness(r, g, b) > maxBrightness);
+
         return Color.color(r, g, b);
     }
+
+    private float calculateBrightness(float r, float g, float b) {
+        return (0.299f * r + 0.587f * g + 0.114f * b);
+    }
+
 
     // Get the color of this party
     public Color getColor() {
