@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
@@ -33,6 +34,8 @@ public class GameScreen extends Application {
     private static int currentEventIndex = 0;
 
     private TextArea eventTextArea; // Updated: Declared as an instance variable
+    private ImageView nextButton; // Updated: Declared as an instance variable
+    private StackPane root; // Updated: Declared as an instance variable
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -65,7 +68,7 @@ public class GameScreen extends Application {
         imageView.setFitHeight(screenBounds.getHeight());
 
         // Create a layout and add the ImageView to it
-        StackPane root = new StackPane();
+        root = new StackPane();
         root.getChildren().add(imageView);
 
         // Create a VBox container for the text area
@@ -155,7 +158,7 @@ public class GameScreen extends Application {
         }
 
         Image nextButtonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/next.png")));
-        ImageView nextButton = new ImageView(nextButtonImage);
+        nextButton = new ImageView(nextButtonImage);
         nextButton.setTranslateX(637); // Adjust the X coordinate as necessary
         nextButton.setTranslateY(screenBounds.getHeight() - nextButtonImage.getHeight() + 100); // Adjust the Y coordinate as necessary
         nextButton.setFitWidth(130);
@@ -165,6 +168,7 @@ public class GameScreen extends Application {
                 Event event = events.get(currentEventIndex);
                 displayEventDescription(event); // Call the updated method
                 currentEventIndex++;
+                nextButton.setVisible(false); // Hide the button after clicking
             }
         });
         root.getChildren().add(nextButton);
@@ -204,6 +208,7 @@ public class GameScreen extends Application {
             ArrayList<City> cities = GameMap.getCities();
             City randomCity = getRandomCity(cities);
             event.setCityName(randomCity.getName());
+            createExclamationMark(randomCity); // Create exclamation mark for random city
         }
 
         // Append the city name to the description if applicable
@@ -223,6 +228,16 @@ public class GameScreen extends Application {
         Random random = new Random();
         return nonCapitolCities.get(random.nextInt(nonCapitolCities.size()));
     }
+
+    private void createExclamationMark(City city) {
+        Text exclamationMark = new Text("!");
+        exclamationMark.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+        exclamationMark.setFill(Color.MAROON);
+        exclamationMark.setTranslateX(city.getX() - root.getScene().getWidth() / 2);
+        exclamationMark.setTranslateY(city.getY() - root.getScene().getHeight() / 2 - 40); // Adjust as necessary
+        root.getChildren().add(exclamationMark);
+    }
+
 
     public static void main(String[] args) {
         launch(args);
