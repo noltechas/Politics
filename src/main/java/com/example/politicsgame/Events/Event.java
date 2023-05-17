@@ -1,11 +1,23 @@
 package com.example.politicsgame.Events;
 
+import com.example.politicsgame.City;
+
 import java.util.ArrayList;
 
 public class Event {
     private String name;
     private String description;
     private String location;
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    private String cityName;
     private ArrayList<Decision> decisions;
 
     public String getName() {
@@ -17,6 +29,7 @@ public class Event {
     }
 
     public String getDescription() {
+
         return description;
     }
 

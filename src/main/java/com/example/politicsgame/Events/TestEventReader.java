@@ -42,6 +42,16 @@ public class TestEventReader {
                                 + ", Food: " + cityAffects.getFood()
                                 + ", Knowledge: " + cityAffects.getKnowledge()
                                 + ", Stability: " + cityAffects.getStability());
+
+                        Affect adjacentAffects = outcome.getAdjacent_city_affects();
+                        System.out.println("\t\t\tAdjacent City Affects: "
+                                + "Positive? " + adjacentAffects.isPositive()
+                                + ", Influence: " + adjacentAffects.getInfluence()
+                                + ", Wealth: " + adjacentAffects.getWealth()
+                                + ", Happiness: " + adjacentAffects.getHappiness()
+                                + ", Food: " + adjacentAffects.getFood()
+                                + ", Knowledge: " + adjacentAffects.getKnowledge()
+                                + ", Stability: " + adjacentAffects.getStability());
                     }
                 }
 

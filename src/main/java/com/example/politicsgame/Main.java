@@ -5,12 +5,9 @@ import static javafx.application.Application.launch;
 public class Main {
 
     /*TODO:
-        1. Create text field
-        2. Create Event handling for player/all parties
-        3. Create Game Loop
-        4. Create "Next Turn" button (only available at certain times)
-        5. Create equations for handling positive/negative events
-        6. Add adjacent_city_affects to the json format
+        1. Create Event handling for player/all parties
+        2. Create Game Loop
+        3. Create equations for handling positive/negative events
      */
     public static Party party;
 

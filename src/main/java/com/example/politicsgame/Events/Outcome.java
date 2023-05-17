@@ -6,6 +6,16 @@ public class Outcome {
     private Affect kingdom_affects;
     private Affect affected_city_affects;
 
+    public Affect getAdjacent_city_affects() {
+        return adjacent_city_affects;
+    }
+
+    public void setAdjacent_city_affects(Affect adjacent_city_affects) {
+        this.adjacent_city_affects = adjacent_city_affects;
+    }
+
+    private Affect adjacent_city_affects;
+
     public String getDescription() {
         return description;
     }

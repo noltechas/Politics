@@ -8,6 +8,7 @@ public class City {
     private CityPartySupport cityPartySupport;
     private ArrayList<Connection> connections = new ArrayList<>();
     private String name;
+    private static Set<String> usedNames = new HashSet<>();
     private String history;
 
     private int population;
@@ -65,7 +66,7 @@ public class City {
         this.money = rand.nextInt(100000) + 1000;
         this.happiness = 5;
 
-        this.name = cityNames.get(rand.nextInt(cityNames.size()));
+        this.name = generateUniqueCityName(rand);
         this.resources = resourcesList.get(rand.nextInt(resourcesList.size()));
         this.beliefSystem = beliefSystems.get(rand.nextInt(beliefSystems.size()));
         this.population = rand.nextInt(10000) + 1000; // population between 1000 and 11000
@@ -189,6 +190,15 @@ public class City {
         return new ArrayList<>(sortedParties.subList(0, Math.min(n, sortedParties.size())));
     }
 
+    private String generateUniqueCityName(Random rand) {
+        String cityName = cityNames.get(rand.nextInt(cityNames.size()));
 
+        while (usedNames.contains(cityName)) {
+            cityName = cityNames.get(rand.nextInt(cityNames.size()));
+        }
+
+        usedNames.add(cityName);
+        return cityName;
+    }
 
 }

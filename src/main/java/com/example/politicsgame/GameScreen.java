@@ -1,12 +1,11 @@
 package com.example.politicsgame;
 
-import com.example.politicsgame.CityStatsDisplay;
+import com.example.politicsgame.Events.Event;
+import com.example.politicsgame.Events.EventReader;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -24,12 +23,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Random;
 
 public class GameScreen extends Application {
 
+    private static ArrayList<Event> events = EventReader.readEventsFromJson("src/main/resources/events.json");
+    private static int currentEventIndex = 0;
+
+    private TextArea eventTextArea; // Updated: Declared as an instance variable
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Collections.shuffle(events);
+
         // Retrieve the party name from the main class
         String partyName = Main.party.getName();
 
@@ -69,7 +77,7 @@ public class GameScreen extends Application {
         textBoxContainer.setMaxWidth(300); // Adjust the width as necessary
 
         // Create a TextArea for displaying current events
-        TextArea eventTextArea = new TextArea();
+        eventTextArea = new TextArea();
         eventTextArea.setEditable(false);
         eventTextArea.setPrefWidth(10); // Adjust the width as necessary
         eventTextArea.setPrefRowCount(10); // Set the number of visible rows
@@ -153,14 +161,16 @@ public class GameScreen extends Application {
         nextButton.setFitWidth(130);
         nextButton.setFitHeight(130);
         nextButton.setOnMouseClicked(e -> {
-            eventTextArea.appendText("\nNext turn!");
+            if (currentEventIndex < events.size()) {
+                Event event = events.get(currentEventIndex);
+                displayEventDescription(event); // Call the updated method
+                currentEventIndex++;
+            }
         });
         root.getChildren().add(nextButton);
 
         textBoxContainer.getChildren().add(eventTextArea);
         root.getChildren().add(textBoxContainer);
-        // Example of updating the text field with current events
-        eventTextArea.setText("New event occurred!"); // Replace this with your logic to update the text area based on game events
 
         // Create a scene and add the layout to it
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
@@ -183,6 +193,35 @@ public class GameScreen extends Application {
 
         star.setFill(color);
         return star;
+    }
+
+    private void displayEventDescription(Event event) {
+        String description = event.getDescription();
+
+        // Check if the cityName field is empty
+        if (event.getCityName() == null && event.getLocation().equals("random_city")) {
+            // Choose a random city (not a capitol city) and assign it to cityName
+            ArrayList<City> cities = GameMap.getCities();
+            City randomCity = getRandomCity(cities);
+            event.setCityName(randomCity.getName());
+        }
+
+        // Append the city name to the description if applicable
+        String cityName = event.getCityName();
+        if (cityName != null) {
+            description += cityName;
+        }
+
+        // Display the updated description
+        eventTextArea.appendText(description + "\n");
+    }
+
+    private City getRandomCity(ArrayList<City> cities) {
+        ArrayList<City> nonCapitolCities = new ArrayList<>(cities);
+        nonCapitolCities.removeIf(City::isCapitol);
+
+        Random random = new Random();
+        return nonCapitolCities.get(random.nextInt(nonCapitolCities.size()));
     }
 
     public static void main(String[] args) {
