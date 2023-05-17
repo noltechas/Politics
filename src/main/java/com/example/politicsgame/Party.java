@@ -1,7 +1,10 @@
 package com.example.politicsgame;
 
+import com.example.politicsgame.Events.Decision;
+import com.example.politicsgame.Events.Event;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -10,11 +13,13 @@ public class Party {
     private String name;
     private Map<City, Double> citySupport;
     private Color color;
+    private boolean isPlayerParty;
 
-    public Party(String name) {
+    public Party(String name, boolean isPlayerParty) {
         this.name = name;
         this.citySupport = new HashMap<>();
         this.color = generateRandomColor();
+        this.isPlayerParty = isPlayerParty;
     }
 
     public String getName() {
@@ -51,9 +56,23 @@ public class Party {
         return (0.299f * r + 0.587f * g + 0.114f * b);
     }
 
-
     // Get the color of this party
     public Color getColor() {
         return color;
+    }
+
+    // Choose a decision for an event
+    public Decision chooseDecision(Event event) {
+        if (isPlayerParty) {
+            // Perform actions for player party's decision
+            // This method should be implemented separately based on your game logic
+            // Return the chosen decision for the player
+            return null;
+        } else {
+            // Randomly choose a decision for non-player parties
+            ArrayList<Decision> decisions = event.getDecisions();
+            int randomIndex = new Random().nextInt(decisions.size());
+            return decisions.get(randomIndex);
+        }
     }
 }

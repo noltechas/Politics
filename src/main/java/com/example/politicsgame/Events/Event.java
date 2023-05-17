@@ -1,6 +1,7 @@
 package com.example.politicsgame.Events;
 
 import com.example.politicsgame.City;
+import com.example.politicsgame.GameMap;
 
 import java.util.ArrayList;
 
@@ -51,5 +52,14 @@ public class Event {
 
     public void setDecisions(ArrayList<Decision> decisions) {
         this.decisions = decisions;
+    }
+
+    public City getCity(){
+        for(int i = 0; i < GameMap.getCities().size(); i++){
+            if(GameMap.getCities().get(i).getName().equals(this.location))
+                return GameMap.getCities().get(i);
+        }
+        System.out.println("ERROR IN FINDING CITY");
+        return null;
     }
 }

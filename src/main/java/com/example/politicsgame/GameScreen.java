@@ -141,7 +141,7 @@ public class GameScreen extends Application {
 
             // Add a stroke
             cityText.setStroke(Color.BLACK);
-            cityText.setStrokeWidth(0.7);  // Adjust the stroke width as necessary
+            cityText.setStrokeWidth(0.5);  // Adjust the stroke width as necessary
 
             // Position the text according to the city's coordinates
             cityText.setTranslateX(city.getX() - screenBounds.getWidth() / 2);
@@ -179,6 +179,7 @@ public class GameScreen extends Application {
         root.getChildren().add(nextButton);
 
         textBoxContainer.getChildren().add(eventTextArea);
+        eventTextArea.appendText("Welcome to the Kingdom of " + GameMap.getKingdomName() + "!\n");
         root.getChildren().add(textBoxContainer);
 
         // Create a scene and add the layout to it
@@ -219,9 +220,9 @@ public class GameScreen extends Application {
 
         // Append the location to the description if applicable
         String location = event.getLocation();
-        if (location != null) {
+
+        if (!event.getLocation().equals("whole_kingdom"))
             description += location;
-        }
 
         // Display the updated description
         eventTextArea.appendText(description + "\n");

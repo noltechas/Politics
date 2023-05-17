@@ -1,20 +1,26 @@
 package com.example.politicsgame;
 
+import com.example.politicsgame.Events.Decision;
 import com.example.politicsgame.Events.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class EventWindow {
     private static final double WINDOW_WIDTH = 600;
     private static final double WINDOW_HEIGHT = 400;
+    private static final double COLUMN_SPACING = 20;
+    private static final double BUTTON_WIDTH = 100;
+    private static final double BUTTON_HEIGHT = 40;
 
     private Event event;
 
@@ -33,24 +39,66 @@ public class EventWindow {
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(10));
+        vbox.setBackground(new Background(new BackgroundFill(Color.LIGHTGOLDENRODYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 
         // Load custom font
         Font ancientFont = Font.loadFont(getClass().getResourceAsStream("/Deutsch.ttf"), 20);
 
         // Event description
         Label descriptionLabel;
-        if(event.getLocation() != "whole_kingdom")
-            descriptionLabel = new Label(event.getDescription() + event.getLocation());
-        else
+        if (event.getLocation().equals("whole_kingdom")) {
             descriptionLabel = new Label(event.getDescription());
-        descriptionLabel.setFont(Font.font(ancientFont.getFamily(), FontWeight.BOLD, 20));
+        } else {
+            descriptionLabel = new Label(event.getDescription() + event.getLocation());
+        }
+        descriptionLabel.setFont(Font.font(ancientFont.getFamily(), FontWeight.BOLD, 32));
         descriptionLabel.setTextFill(Color.BLACK);
-        descriptionLabel.setWrapText(true); // Enable text wrapping
-        descriptionLabel.setMaxWidth(WINDOW_WIDTH - 20); // Adjust width for padding
+        descriptionLabel.setWrapText(true);
+        descriptionLabel.setMaxWidth(WINDOW_WIDTH - 20);
+        descriptionLabel.setTextAlignment(TextAlignment.CENTER);
+
         vbox.getChildren().add(descriptionLabel);
+
+        // Event decisions
+        HBox decisionsContainer = new HBox();
+        decisionsContainer.setAlignment(Pos.CENTER);
+        decisionsContainer.setSpacing(COLUMN_SPACING);
+        vbox.getChildren().add(decisionsContainer);
+
+        // Create a column for each decision
+        for (Decision decision : event.getDecisions()) {
+            VBox decisionColumn = createDecisionColumn(decision.getDescription());
+            decisionsContainer.getChildren().add(decisionColumn);
+        }
 
         Scene scene = new Scene(vbox);
         window.setScene(scene);
         window.show();
     }
+
+    private VBox createDecisionColumn(String decision) {
+        VBox column = new VBox();
+        column.setAlignment(Pos.TOP_CENTER);
+        column.setSpacing(10);
+
+        Label decisionLabel = new Label(decision);
+        decisionLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/Seagram tfb.ttf"), 13));
+        decisionLabel.setTextFill(Color.BLACK);
+        decisionLabel.setWrapText(true);
+        decisionLabel.setMaxWidth(BUTTON_WIDTH);
+        decisionLabel.setTextAlignment(TextAlignment.CENTER);
+        VBox.setVgrow(decisionLabel, Priority.ALWAYS);
+
+        Button chooseButton = new Button("X");
+        chooseButton.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+        chooseButton.setDisable(false);
+        chooseButton.setFont(Font.loadFont(getClass().getResourceAsStream("/Seagram tfb.ttf"), 20));
+        VBox.setMargin(chooseButton, new Insets(10, 0, 0, 0));
+        VBox.setVgrow(chooseButton, Priority.NEVER);
+        chooseButton.setAlignment(Pos.CENTER);
+
+        column.getChildren().addAll(decisionLabel, chooseButton);
+        return column;
+    }
+
 }
