@@ -3,7 +3,10 @@ module com.example.politicsgame {
     requires javafx.fxml;
 
     requires com.almasb.fxgl.all;
+    requires com.fasterxml.jackson.databind;
+    requires com.google.gson;
 
     opens com.example.politicsgame to javafx.fxml;
+    opens com.example.politicsgame.Events to com.google.gson;
     exports com.example.politicsgame;
 }

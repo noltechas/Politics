@@ -1,0 +1,607 @@
+{
+  "events": [
+    {
+      "name": "Flood",
+      "description": "A flood has occurred in the city of ",
+      "location": "random_city",
+      "decisions": [
+        {
+          "description": "Reallocate funds for disaster relief.",
+          "outcomes": [
+            {
+              "description": "Funds were successfully allocated to the affected city.",
+              "probability": 70,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 10,
+                "wealth": -10,
+                "happiness": 5,
+                "food": -10,
+                "knowledge": 0,
+                "stability": 10
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 0,
+                "wealth": 0,
+                "happiness": 20,
+                "food": 20,
+                "knowledge": 0,
+                "stability": 10
+              }
+            },
+            {
+              "description": "Funds were successfully allocated to the affected city. However, bandits intercepted some of the supplies on the trade routes.",
+              "probability": 20,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 0,
+                "wealth": -10,
+                "happiness": 0,
+                "food": -15,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 0,
+                "wealth": 0,
+                "happiness": 10,
+                "food": 5,
+                "knowledge": 0,
+                "stability": 0
+              }
+            },
+            {
+              "description": "While the supplies were being sent, a large storm covered the kingdom, leading to the supplies to be soiled.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": 0,
+                "wealth": -10,
+                "happiness": -10,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": 0,
+                "happiness": -20,
+                "food": -30,
+                "knowledge": 0,
+                "stability": -10
+              }
+            }
+          ]
+        },
+        {
+          "description": "Ignore the disaster and hope for the best.",
+          "outcomes": [
+            {
+              "description": "The city was left without support from the kingdom.",
+              "probability": 80,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": -10,
+                "wealth": 5,
+                "happiness": 0,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": 0,
+                "happiness": -20,
+                "food": -30,
+                "knowledge": 0,
+                "stability": -10
+              }
+            },
+            {
+              "description": "The city was able to fund the relief on their own, leading to a drastic increase in morale. The rest of the kingdom has taken note of their success.",
+              "probability": 80,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": 0,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -15
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 30,
+                "wealth": 10,
+                "happiness": 20,
+                "food": 30,
+                "knowledge": 0,
+                "stability": 10
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Famine",
+      "description": "A severe famine has swept through the kingdom.",
+      "location": "whole_kingdom",
+      "decisions": [
+        {
+          "description": "Redistribute food reserves to affected areas.",
+          "outcomes": [
+            {
+              "description": "The redistribution was successful and the situation improved.",
+              "probability": 40,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 10,
+                "wealth": -15,
+                "happiness": 20,
+                "food": -30,
+                "knowledge": 0,
+                "stability": 10
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "Food reserves were insufficient and the situation remains dire.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -10,
+                "happiness": -20,
+                "food": -20,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The redistribution was somewhat successful, but not enough to completely alleviate the famine.",
+              "probability": 20,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 5,
+                "wealth": -10,
+                "happiness": 10,
+                "food": -20,
+                "knowledge": 0,
+                "stability": 5
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The redistribution was poorly managed, leading to further discontent.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -5,
+                "happiness": -30,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -15
+              },
+              "affected_city_affects": {}
+            }
+          ]
+        },
+        {
+          "description": "Increase taxes to purchase food from neighboring kingdoms.",
+          "outcomes": [
+            {
+              "description": "The tax increase was successful and food was purchased.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 10,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 30,
+                "knowledge": 0,
+                "stability": 0
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The tax increase was met with resistance and failed.",
+              "probability": 40,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -10,
+                "happiness": -20,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The tax increase was successful, but the food purchased was insufficient.",
+              "probability": 20,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": 0,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 10,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The tax increase and food purchase went well, but the food was lost during transportation.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -20,
+                "happiness": -10,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {}
+            }
+          ]
+        },
+        {
+          "description": "Do nothing and hope for the best.",
+          "outcomes": [
+            {
+              "description": "The situation worsened without intervention.",
+              "probability": 50,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": 0,
+                "happiness": -30,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -20
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The situation miraculously improved on its own.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 10,
+                "wealth": 10,
+                "happiness": 20,
+                "food": 20,
+                "knowledge": 0,
+                "stability": 10
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The situation remained the same without any change.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": 0,
+                "wealth": 0,
+                "happiness": 0,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 0
+              },
+              "affected_city_affects": {}
+            },
+            {
+              "description": "The situation slightly improved without any intervention.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 5,
+                "wealth": 5,
+                "happiness": 10,
+                "food": 10,
+                "knowledge": 0,
+                "stability": 5
+              },
+              "affected_city_affects": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Riot",
+      "description": "A riot has broken out in the city of ",
+      "location": "random_city",
+      "decisions": [
+        {
+          "description": "Deploy military to restore order.",
+          "outcomes": [
+            {
+              "description": "The military successfully restored order.",
+              "probability": 40,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 10,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 20
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 5,
+                "wealth": 0,
+                "happiness": 10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 30
+              }
+            },
+            {
+              "description": "The military intervention escalated the conflict.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -10,
+                "happiness": -20,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -10,
+                "happiness": -30,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -20
+              }
+            },
+            {
+              "description": "The military was unable to restore order.",
+              "probability": 20,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -5,
+                "happiness": -15,
+                "food": -5,
+                "knowledge": 0,
+                "stability": -10
+              }
+            },
+            {
+              "description": "The military intervention resulted in a brief calm, but unrest soon resumed.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -5,
+                "wealth": -5,
+                "happiness": -5,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 0
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -5,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -5
+              }
+            }
+          ]
+        },
+        {
+          "description": "Negotiate with the rioters to address their demands.",
+          "outcomes": [
+            {
+              "description": "Negotiations were successful and the rioters dispersed.",
+              "probability": 50,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 15,
+                "wealth": -10,
+                "happiness": 20,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 30
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 20,
+                "wealth": 0,
+                "happiness": 30,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 40
+              }
+            },
+            {
+              "description": "Negotiations failed and the rioters became more agitated.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -10,
+                "happiness": -20,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -20
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -10,
+                "happiness": -30,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -30
+              }
+            },
+            {
+              "description": "Negotiations were inconclusive. The situation remains tense.",
+              "probability": 15,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -5,
+                "wealth": 0,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -5,
+                "wealth": 0,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -10
+              }
+            },
+            {
+              "description": "Negotiations led to some compromises. It may not be a lasting peace, but the situation has improved for now.",
+              "probability": 5,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": 5,
+                "wealth": -5,
+                "happiness": 5,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 10
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 5,
+                "wealth": 0,
+                "happiness": 10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": 15
+              }
+            }
+          ]
+        },
+        {
+          "description": "Ignore the riot, it will blow over.",
+          "outcomes": [
+            {
+              "description": "The riot eventually petered out, but not before causing significant damage.",
+              "probability": 40,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -10,
+                "wealth": -5,
+                "happiness": -10,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -10
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -15,
+                "happiness": -20,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -20
+              }
+            },
+            {
+              "description": "The riot grew in scale and spread to other parts of the city.",
+              "probability": 30,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -15,
+                "wealth": -10,
+                "happiness": -20,
+                "food": -5,
+                "knowledge": 0,
+                "stability": -20
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -25,
+                "wealth": -20,
+                "happiness": -30,
+                "food": -15,
+                "knowledge": 0,
+                "stability": -30
+              }
+            },
+            {
+              "description": "The rioters dispersed after realizing they weren't going to get a response.",
+              "probability": 20,
+              "kingdom_affects": {
+                "positive": true,
+                "influence": -5,
+                "wealth": 0,
+                "happiness": -5,
+                "food": 0,
+                "knowledge": 0,
+                "stability": -5
+              },
+              "affected_city_affects": {
+                "positive": true,
+                "influence": 0,
+                "wealth": -5,
+                "happiness": 0,
+                "food": -5,
+                "knowledge": 0,
+                "stability": -5
+              }
+            },
+            {
+              "description": "The riot turned into a rebellion, threatening the stability of the kingdom.",
+              "probability": 10,
+              "kingdom_affects": {
+                "positive": false,
+                "influence": -20,
+                "wealth": -15,
+                "happiness": -30,
+                "food": -10,
+                "knowledge": 0,
+                "stability": -30
+              },
+              "affected_city_affects": {
+                "positive": false,
+                "influence": -30,
+                "wealth": -25,
+                "happiness": -40,
+                "food": -20,
+                "knowledge": 0,
+                "stability": -40
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
