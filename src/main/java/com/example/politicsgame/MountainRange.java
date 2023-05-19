@@ -6,9 +6,35 @@ import java.util.Collections;
 public class MountainRange {
 
     private String name;
+    private int x;
+    private int size;
 
-    public MountainRange(){
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    private int y;
+    private int rotation;
+    private ArrayList<Connection> connections = new ArrayList<>();
+
+    public MountainRange(int x, int y, int rotation, int size){
         this.name = generateName();
+        this.x = x;
+        this.y = y;
+        this.rotation = rotation;
+        this.size = size;
     }
 
     private String generateName() {
@@ -55,5 +81,25 @@ public class MountainRange {
 
         Collections.shuffle(mountainRangeNames);
         return mountainRangeNames.get(0);
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

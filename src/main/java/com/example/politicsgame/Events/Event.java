@@ -1,23 +1,14 @@
 package com.example.politicsgame.Events;
 
-import com.example.politicsgame.City;
-import com.example.politicsgame.GameMap;
+import com.example.politicsgame.Party;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Event {
     private String name;
     private String description;
     private String location;
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
     private String cityName;
     private ArrayList<Decision> decisions;
 
@@ -30,7 +21,6 @@ public class Event {
     }
 
     public String getDescription() {
-
         return description;
     }
 
@@ -46,6 +36,14 @@ public class Event {
         this.location = location;
     }
 
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
     public ArrayList<Decision> getDecisions() {
         return decisions;
     }
@@ -54,12 +52,9 @@ public class Event {
         this.decisions = decisions;
     }
 
-    public City getCity(){
-        for(int i = 0; i < GameMap.getCities().size(); i++){
-            if(GameMap.getCities().get(i).getName().equals(this.location))
-                return GameMap.getCities().get(i);
-        }
-        System.out.println("ERROR IN FINDING CITY");
-        return null;
+    public Decision makeDecision(){
+        ArrayList<Decision> oddsDecisions = new ArrayList<>(decisions);
+        Collections.shuffle(oddsDecisions);
+        return oddsDecisions.get(0);
     }
 }

@@ -12,7 +12,7 @@
               "description": "Funds were successfully allocated to the affected city.",
               "probability": 70,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 4,
                 "influence": 10,
                 "wealth": -10,
                 "happiness": 5,
@@ -21,7 +21,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": 20,
@@ -30,7 +30,7 @@
                 "stability": 10
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 5,
@@ -43,7 +43,7 @@
               "description": "Funds were successfully allocated to the affected city. However, bandits intercepted some of the supplies on the trade routes.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 0,
                 "wealth": -10,
                 "happiness": 0,
@@ -52,7 +52,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": 10,
@@ -61,7 +61,7 @@
                 "stability": 0
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": 1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -74,7 +74,7 @@
               "description": "While the supplies were being sent, a large storm covered the kingdom, leading to the supplies to be soiled.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": 0,
                 "wealth": -10,
                 "happiness": -10,
@@ -83,7 +83,7 @@
                 "stability": -10
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -20,
@@ -92,7 +92,7 @@
                 "stability": -10
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -110,7 +110,7 @@
               "description": "The city was left without support from the kingdom.",
               "probability": 80,
               "kingdom_affects": {
-                "positive": true,
+                "positive": -4,
                 "influence": -10,
                 "wealth": 5,
                 "happiness": 0,
@@ -119,7 +119,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -20,
@@ -128,7 +128,7 @@
                 "stability": -10
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -141,7 +141,7 @@
               "description": "The city was able to fund the relief on their own, leading to a drastic increase in morale. The rest of the kingdom has taken note of their success.",
               "probability": 80,
               "kingdom_affects": {
-                "positive": false,
+                "positive": 4,
                 "influence": -20,
                 "wealth": 0,
                 "happiness": -10,
@@ -150,7 +150,7 @@
                 "stability": -15
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 4,
                 "influence": 30,
                 "wealth": 10,
                 "happiness": 20,
@@ -159,7 +159,7 @@
                 "stability": 10
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": 5,
                 "happiness": 5,
@@ -184,7 +184,7 @@
               "description": "The redistribution was successful and the situation improved.",
               "probability": 40,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -15,
                 "happiness": 20,
@@ -199,7 +199,7 @@
               "description": "Food reserves were insufficient and the situation remains dire.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": -10,
                 "happiness": -20,
@@ -214,7 +214,7 @@
               "description": "The redistribution was somewhat successful, but not enough to completely alleviate the famine.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -10,
                 "happiness": 10,
@@ -229,7 +229,7 @@
               "description": "The redistribution was poorly managed, leading to further discontent.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -20,
                 "wealth": -5,
                 "happiness": -30,
@@ -249,7 +249,7 @@
               "description": "The tax increase was successful and food was purchased.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": -10,
@@ -264,7 +264,7 @@
               "description": "The tax increase was met with resistance and failed.",
               "probability": 40,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -20,
                 "wealth": -10,
                 "happiness": -20,
@@ -279,7 +279,7 @@
               "description": "The tax increase was successful, but the food purchased was insufficient.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": 0,
                 "wealth": -5,
                 "happiness": -10,
@@ -294,7 +294,7 @@
               "description": "The tax increase and food purchase went well, but the food was lost during transportation.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": -20,
                 "happiness": -10,
@@ -314,7 +314,7 @@
               "description": "The situation worsened without intervention.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -20,
                 "wealth": 0,
                 "happiness": -30,
@@ -329,7 +329,7 @@
               "description": "The situation miraculously improved on its own.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 10,
                 "wealth": 10,
                 "happiness": 20,
@@ -344,7 +344,7 @@
               "description": "The situation remained the same without any change.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": 0,
@@ -359,7 +359,7 @@
               "description": "The situation slightly improved without any intervention.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 5,
                 "wealth": 5,
                 "happiness": 10,
@@ -386,7 +386,7 @@
               "description": "The military successfully restored order.",
               "probability": 40,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": -10,
@@ -395,7 +395,7 @@
                 "stability": 20
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 10,
@@ -404,7 +404,7 @@
                 "stability": 30
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 2,
                 "wealth": 0,
                 "happiness": 5,
@@ -417,7 +417,7 @@
               "description": "The military intervention escalated the conflict.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": -10,
                 "happiness": -20,
@@ -426,7 +426,7 @@
                 "stability": -10
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -20,
                 "wealth": -10,
                 "happiness": -30,
@@ -435,7 +435,7 @@
                 "stability": -20
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -2,
                 "happiness": -10,
@@ -448,7 +448,7 @@
               "description": "The military was unable to restore order.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
                 "wealth": -5,
                 "happiness": -10,
@@ -457,7 +457,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
                 "wealth": -5,
                 "happiness": -15,
@@ -466,7 +466,7 @@
                 "stability": -10
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -2,
                 "wealth": -1,
                 "happiness": -5,
@@ -479,7 +479,7 @@
               "description": "The military intervention resulted in a brief calm, but unrest soon resumed.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -488,7 +488,7 @@
                 "stability": 0
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -10,
@@ -497,7 +497,7 @@
                 "stability": -5
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -1,
                 "wealth": -1,
                 "happiness": -2,
@@ -515,7 +515,7 @@
               "description": "Negotiations were successful and the rioters dispersed.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 4,
                 "influence": 15,
                 "wealth": -10,
                 "happiness": 20,
@@ -524,7 +524,7 @@
                 "stability": 30
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 20,
                 "wealth": 0,
                 "happiness": 30,
@@ -533,7 +533,7 @@
                 "stability": 40
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 10,
@@ -546,7 +546,7 @@
               "description": "Negotiations failed and the rioters became more agitated.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": -10,
                 "happiness": -20,
@@ -555,7 +555,7 @@
                 "stability": -20
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -20,
                 "wealth": -10,
                 "happiness": -30,
@@ -564,7 +564,7 @@
                 "stability": -30
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -2,
                 "happiness": -10,
@@ -577,7 +577,7 @@
               "description": "Negotiations were inconclusive. The situation remains tense.",
               "probability": 15,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -586,7 +586,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -595,7 +595,7 @@
                 "stability": -10
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -1,
                 "wealth": 0,
                 "happiness": -2,
@@ -608,7 +608,7 @@
               "description": "Negotiations led to some compromises. It may not be a lasting peace, but the situation has improved for now.",
               "probability": 5,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -5,
                 "happiness": 5,
@@ -617,7 +617,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 10,
@@ -626,7 +626,7 @@
                 "stability": 15
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 1,
                 "wealth": 0,
                 "happiness": 2,
@@ -644,7 +644,7 @@
               "description": "The riot eventually petered out, but not before causing significant damage.",
               "probability": 40,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
                 "wealth": -5,
                 "happiness": -10,
@@ -653,7 +653,7 @@
                 "stability": -10
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -20,
                 "wealth": -15,
                 "happiness": -20,
@@ -662,7 +662,7 @@
                 "stability": -20
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -2,
                 "happiness": -5,
@@ -675,7 +675,7 @@
               "description": "The riot grew in scale and spread to other parts of the city.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -15,
                 "wealth": -10,
                 "happiness": -20,
@@ -684,7 +684,7 @@
                 "stability": -20
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -25,
                 "wealth": -20,
                 "happiness": -30,
@@ -693,7 +693,7 @@
                 "stability": -30
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -10,
@@ -706,7 +706,7 @@
               "description": "The rioters dispersed after realizing they weren't going to get a response.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -715,7 +715,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 0,
                 "wealth": -5,
                 "happiness": 0,
@@ -724,7 +724,7 @@
                 "stability": -5
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 0,
                 "wealth": -1,
                 "happiness": 0,
@@ -737,7 +737,7 @@
               "description": "The riot turned into a rebellion, threatening the stability of the kingdom.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -20,
                 "wealth": -15,
                 "happiness": -30,
@@ -746,7 +746,7 @@
                 "stability": -30
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -5,
                 "influence": -30,
                 "wealth": -25,
                 "happiness": -40,
@@ -755,7 +755,7 @@
                 "stability": -40
               },
               "adjacent_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
                 "wealth": -5,
                 "happiness": -20,
@@ -780,7 +780,7 @@
               "description": "The investigation uncovers the identity of the perpetrator and their motives.",
               "probability": 40,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": -5,
@@ -789,7 +789,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 0,
@@ -798,7 +798,7 @@
                 "stability": 5
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 2,
                 "wealth": 0,
                 "happiness": 0,
@@ -811,7 +811,7 @@
               "description": "The investigation fails to uncover any useful information.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -820,7 +820,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": -5,
@@ -834,7 +834,7 @@
               "description": "The investigation points towards a different individual who was wrongly accused.",
               "probability": 20,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -843,7 +843,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": -5,
@@ -857,7 +857,7 @@
               "description": "The investigation leads to a conspiracy, revealing a larger plot against the entire kingdom.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 4,
                 "influence": 15,
                 "wealth": -10,
                 "happiness": 10,
@@ -866,7 +866,7 @@
                 "stability": 20
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 4,
                 "influence": 10,
                 "wealth": 0,
                 "happiness": 10,
@@ -875,7 +875,7 @@
                 "stability": 10
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 5,
@@ -893,7 +893,7 @@
               "description": "The increased security measures effectively deter future assassination attempts.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": -5,
@@ -902,7 +902,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 0,
@@ -911,7 +911,7 @@
                 "stability": 5
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 2,
                 "wealth": 0,
                 "happiness": 0,
@@ -924,7 +924,7 @@
               "description": "The increased security measures create a sense of paranoia and unease among the population.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -933,7 +933,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": -5,
@@ -947,7 +947,7 @@
               "description": "The increased security measures prove ineffective, as another assassination attempt occurs.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -10,
@@ -956,7 +956,7 @@
                 "stability": -10
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -970,7 +970,7 @@
               "description": "The increased security measures unintentionally isolate city leaders from the citizens, weakening their influence.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -15,
                 "wealth": 0,
                 "happiness": -5,
@@ -979,7 +979,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -4,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -5,
@@ -998,7 +998,7 @@
               "description": "The public gathering boosts morale and reinforces the leader's popularity.",
               "probability": 60,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 15,
                 "wealth": -10,
                 "happiness": 20,
@@ -1007,7 +1007,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": 0,
                 "happiness": 15,
@@ -1016,7 +1016,7 @@
                 "stability": 5
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 10,
@@ -1029,7 +1029,7 @@
               "description": "The public gathering is met with hostility and protests, worsening the public image of the leader.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -20,
@@ -1038,7 +1038,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -1052,7 +1052,7 @@
               "description": "The public gathering sparks a sense of unity and solidarity among the citizens.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": 10,
@@ -1061,7 +1061,7 @@
                 "stability": 5
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 5,
@@ -1070,7 +1070,7 @@
                 "stability": 2
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 1,
                 "influence": 2,
                 "wealth": 0,
                 "happiness": 2,
@@ -1083,7 +1083,7 @@
               "description": "The public gathering is disrupted by a violent clash, leading to injuries and chaos.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -15,
@@ -1092,7 +1092,7 @@
                 "stability": -10
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -1111,7 +1111,7 @@
               "description": "The surveillance measures effectively prevent future assassination attempts.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": -5,
@@ -1120,7 +1120,7 @@
                 "stability": 10
               },
               "affected_city_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
                 "wealth": 0,
                 "happiness": 0,
@@ -1129,7 +1129,7 @@
                 "stability": 5
               },
               "adjacent_city_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 2,
                 "wealth": 0,
                 "happiness": 0,
@@ -1142,7 +1142,7 @@
               "description": "The stricter surveillance measures infringe on citizens' privacy, leading to public outrage.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -10,
@@ -1151,7 +1151,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": 0,
                 "wealth": 0,
                 "happiness": -5,
@@ -1165,7 +1165,7 @@
               "description": "The stricter surveillance measures lead to false accusations and increased social tension.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -5,
@@ -1174,7 +1174,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -1188,7 +1188,7 @@
               "description": "The stricter surveillance measures are easily bypassed, rendering them ineffective.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
                 "wealth": 0,
                 "happiness": -5,
@@ -1197,7 +1197,7 @@
                 "stability": -5
               },
               "affected_city_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
                 "wealth": 0,
                 "happiness": -5,
@@ -1223,13 +1223,13 @@
               "description": "The austerity measures successfully reduce government spending, stabilizing the economy.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
-                "wealth": 10,
+                "wealth": 4,
                 "happiness": 0,
                 "food": 0,
                 "knowledge": 0,
-                "stability": 10
+                "stability": 4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1238,13 +1238,13 @@
               "description": "The austerity measures deepen the economic recession and lead to social unrest.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -10,
-                "happiness": -20,
+                "wealth": -4,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -10
+                "stability": -4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1253,13 +1253,13 @@
               "description": "The austerity measures have minimal impact on the economy, prolonging the recession.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
-                "wealth": -5,
-                "happiness": -10,
+                "wealth": -3,
+                "happiness": -3,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1268,13 +1268,13 @@
               "description": "The austerity measures are poorly implemented and fail to address the economic issues.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
-                "wealth": -10,
-                "happiness": -10,
+                "wealth": -4,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -10
+                "stability": -4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1288,13 +1288,13 @@
               "description": "The infrastructure projects create jobs and stimulate economic growth.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
-                "wealth": -10,
-                "happiness": 10,
+                "wealth": -4,
+                "happiness": 4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": 10
+                "stability": 4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1303,13 +1303,13 @@
               "description": "The infrastructure projects drain resources and fail to have a significant impact on the economy.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -10,
-                "happiness": -5,
+                "wealth": -4,
+                "happiness": -2,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1318,13 +1318,13 @@
               "description": "The infrastructure projects face delays and cost overruns, exacerbating the economic downturn.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -10,
-                "wealth": -15,
-                "happiness": -10,
+                "wealth": -5,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -10
+                "stability": -4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1333,13 +1333,13 @@
               "description": "The infrastructure projects are mismanaged and become a source of corruption, further damaging the economy.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -15,
-                "wealth": -20,
-                "happiness": -10,
+                "wealth": -5,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -15
+                "stability": -5
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1353,13 +1353,13 @@
               "description": "The financial incentives attract new investments and businesses, leading to economic recovery.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
-                "wealth": -5,
-                "happiness": 10,
+                "wealth": -3,
+                "happiness": 4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": 5
+                "stability": 3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1368,13 +1368,13 @@
               "description": "The financial incentives are ineffective in stimulating economic growth.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -10,
-                "happiness": -5,
+                "wealth": -4,
+                "happiness": -2,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1383,13 +1383,13 @@
               "description": "The financial incentives lead to uneven distribution of wealth and exacerbate social inequalities.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -15,
-                "happiness": -10,
+                "wealth": -5,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1398,13 +1398,13 @@
               "description": "The financial incentives are misused and result in widespread corruption, hindering economic recovery.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
-                "wealth": -20,
-                "happiness": -10,
+                "wealth": -5,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -10
+                "stability": -4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1418,13 +1418,13 @@
               "description": "The protective trade policies revive domestic industries and stimulate economic growth.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 5,
-                "wealth": 10,
-                "happiness": 5,
+                "wealth": 4,
+                "happiness": 3,
                 "food": 0,
                 "knowledge": 0,
-                "stability": 5
+                "stability": 3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1433,13 +1433,13 @@
               "description": "The protective trade policies lead to retaliation from trading partners and further isolate the kingdom.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -10,
-                "happiness": -5,
+                "wealth": -4,
+                "happiness": -2,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1448,13 +1448,13 @@
               "description": "The protective trade policies result in higher prices for consumers and negatively impact living standards.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -5,
-                "wealth": -10,
-                "happiness": -10,
+                "wealth": -4,
+                "happiness": -3,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -5
+                "stability": -3
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1463,13 +1463,13 @@
               "description": "The protective trade policies are poorly implemented and fail to protect domestic industries.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -3,
                 "influence": -10,
-                "wealth": -15,
-                "happiness": -10,
+                "wealth": -5,
+                "happiness": -4,
                 "food": 0,
                 "knowledge": 0,
-                "stability": -10
+                "stability": -4
               },
               "affected_city_affects": {},
               "adjacent_city_affects": {}
@@ -1490,7 +1490,7 @@
               "description": "The investment in cultural institutions leads to a flourishing arts scene and boosts the kingdom's reputation as a cultural hub.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -10,
                 "happiness": 20,
@@ -1505,7 +1505,7 @@
               "description": "The investment in cultural institutions fails to generate significant impact and is seen as a waste of resources.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -10,
                 "happiness": -5,
@@ -1520,7 +1520,7 @@
               "description": "The promotion of artistic endeavors leads to the emergence of talented individuals and a surge in creativity throughout the kingdom.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -5,
                 "happiness": 10,
@@ -1535,7 +1535,7 @@
               "description": "The promotion of artistic endeavors is met with indifference from the population, resulting in limited cultural impact.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -1555,7 +1555,7 @@
               "description": "The academies and educational programs attract scholars and intellectuals, leading to advancements in various fields of knowledge.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -10,
                 "happiness": 15,
@@ -1570,7 +1570,7 @@
               "description": "The academies and educational programs struggle to gain traction and fail to make significant contributions to intellectual growth.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -10,
                 "happiness": -5,
@@ -1585,7 +1585,7 @@
               "description": "The establishment of academies and educational programs sparks curiosity and fosters a love for learning among the population.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -5,
                 "happiness": 10,
@@ -1600,7 +1600,7 @@
               "description": "The establishment of academies and educational programs goes unnoticed by the majority of the population, resulting in limited impact on intellectual growth.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -1620,7 +1620,7 @@
               "description": "The celebration of cultural diversity strengthens unity and fosters appreciation for different traditions and perspectives.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -5,
                 "happiness": 15,
@@ -1635,7 +1635,7 @@
               "description": "The celebration of cultural diversity fails to resonate with the population and is seen as a mere spectacle.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -1650,7 +1650,7 @@
               "description": "The encouragement of cross-cultural exchange leads to a vibrant fusion of artistic styles and cultural practices.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -5,
                 "happiness": 10,
@@ -1665,7 +1665,7 @@
               "description": "The encouragement of cross-cultural exchange generates little interest, resulting in minimal impact on cultural diversity.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,
@@ -1685,7 +1685,7 @@
               "description": "The preservation efforts restore historical sites and artifacts, attracting tourists and bolstering the kingdom's cultural identity.",
               "probability": 50,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 3,
                 "influence": 10,
                 "wealth": -10,
                 "happiness": 15,
@@ -1700,7 +1700,7 @@
               "description": "The preservation efforts face challenges and only achieve limited success, dampening the impact on the kingdom's cultural heritage.",
               "probability": 30,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -2,
                 "influence": -5,
                 "wealth": -10,
                 "happiness": -5,
@@ -1715,7 +1715,7 @@
               "description": "The preservation efforts lead to the discovery of new historical treasures and deepen the kingdom's understanding of its own heritage.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": true,
+                "positive": 2,
                 "influence": 5,
                 "wealth": -5,
                 "happiness": 10,
@@ -1730,7 +1730,7 @@
               "description": "The preservation efforts receive little recognition, resulting in minimal impact on the kingdom's cultural heritage.",
               "probability": 10,
               "kingdom_affects": {
-                "positive": false,
+                "positive": -1,
                 "influence": -5,
                 "wealth": -5,
                 "happiness": -5,

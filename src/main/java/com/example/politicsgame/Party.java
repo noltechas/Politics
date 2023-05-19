@@ -4,12 +4,11 @@ import com.example.politicsgame.Events.Decision;
 import com.example.politicsgame.Events.Event;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class Party {
+
+    private int supporters = 0;
     private String name;
     private Map<City, Double> citySupport;
     private Color color;
@@ -74,5 +73,33 @@ public class Party {
             int randomIndex = new Random().nextInt(decisions.size());
             return decisions.get(randomIndex);
         }
+    }
+
+    // Adjust the support level of the party in a specific city
+    public void adjustSupport(City city, double supportAdjustment) {
+        double currentSupport = citySupport.getOrDefault(city, 0.0);
+        double newSupport = currentSupport + supportAdjustment;
+        citySupport.put(city, newSupport);
+    }
+
+    public int calculateKingdomWideSupporters(Party party, ArrayList<City> cities) {
+        int kingdomWideSupporters = 0;
+
+        for (City city : cities) {
+            double supportPercentage = party.getSupportPercentage(city);
+            int cityPopulation = city.getPopulation();
+            int supporters = (int) Math.round(supportPercentage * cityPopulation);
+            kingdomWideSupporters += supporters;
+        }
+
+        return kingdomWideSupporters;
+    }
+
+    public int getSupporters() {
+        return supporters;
+    }
+
+    public void setSupporters(int supporters) {
+        this.supporters = supporters;
     }
 }

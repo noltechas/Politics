@@ -5,9 +5,7 @@ import static javafx.application.Application.launch;
 public class Main {
 
     /*TODO:
-        1. Create Event handling for player/all parties
-        2. Create Game Loop
-        3. Create equations for handling positive/negative events
+        1. Create test files for event outcomes
      */
     public static Party party;
 

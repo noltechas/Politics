@@ -25,7 +25,7 @@ public class SetupScreen extends Application {
             String partyName = partyNameInput.getText();
 
             if (!partyName.trim().isEmpty()) {
-                Party userParty = new Party(partyName);
+                Party userParty = new Party(partyName,true);
                 Main.party = userParty;
                 GameState.setPlayerParty(userParty);
                 GameMap gameMap = GameMap.getInstance();

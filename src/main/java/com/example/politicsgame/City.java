@@ -51,7 +51,6 @@ public class City {
 
     private static final List<String> beliefSystems = Arrays.asList("Polytheism", "Monotheism", "Atheism", "Ancestor Worship");
     private static final List<String> economies = Arrays.asList("Agricultural", "Industrial", "Trade-based");
-
     private static final List<String> strategicImportances = Arrays.asList("Trade route", "Military outpost", "Cultural hub", "Political center");
 
     private static final List<String> geographicalFeaturesList = Arrays.asList("Coastal", "Mountainous", "Forest", "Desert");

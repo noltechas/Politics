@@ -2,16 +2,15 @@ package com.example.politicsgame;
 
 import com.example.politicsgame.Events.Event;
 import com.example.politicsgame.Events.EventReader;
-import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -32,69 +31,66 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Random;
 
+import static javafx.scene.paint.Color.rgb;
+
 public class GameScreen extends Application {
 
     private static ArrayList<Event> events = EventReader.readEventsFromJson("src/main/resources/events.json");
     private static int currentEventIndex = 0;
 
-    private TextArea eventTextArea; // Updated: Declared as an instance variable
-    private ImageView nextButton; // Updated: Declared as an instance variable
-    private StackPane root; // Updated: Declared as an instance variable
-    private City affectedCity; // Updated: Declared as an instance variable
+    private TextArea eventTextArea;
+    private ImageView nextButton;
+    private StackPane root;
+    private City affectedCity;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Collections.shuffle(events);
 
-        // Retrieve the party name from the main class
         String partyName = Main.party.getName();
 
-        // Initialize the player's party
-        Party playerParty = new Party(partyName);
+        Party playerParty = new Party(partyName, true);
         GameMap gameMap = GameMap.getInstance();
         GameState gameState = new GameState();
 
-        primaryStage.setTitle("Map Display");
+        primaryStage.setTitle(GameMap.getKingdomName());
         try {
             Font.loadFont(new FileInputStream(new File("src/main/resources/Ancient.ttf")), 10);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        try {
+            Font.loadFont(new FileInputStream(new File("src/main/resources/Deutsch.ttf")), 10);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        // Load the image
         Image mapImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/map.png")));
 
-        // Get screen size
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-        // Create an ImageView to display the image
         ImageView imageView = new ImageView(mapImage);
         imageView.setPreserveRatio(true);
         imageView.setFitHeight(screenBounds.getHeight());
 
-        // Create a layout and add the ImageView to it
         root = new StackPane();
         root.getChildren().add(imageView);
 
-        // Create a VBox container for the text area
         VBox textBoxContainer = new VBox();
-        textBoxContainer.setTranslateX(-564); // Adjust the X coordinate as necessary
-        textBoxContainer.setTranslateY(screenBounds.getHeight() - 10 - 200); // Adjust the Y coordinate as necessary
-        textBoxContainer.setSpacing(10); // Adjust the spacing between elements as necessary
-        // Set the maximum width of the textBoxContainer
-        textBoxContainer.setMaxWidth(300); // Adjust the width as necessary
+        textBoxContainer.setTranslateX(-564);
+        textBoxContainer.setTranslateY(screenBounds.getHeight() - 10 - 200);
+        textBoxContainer.setSpacing(10);
+        textBoxContainer.setMaxWidth(300);
 
-        // Create a TextArea for displaying current events
         eventTextArea = new TextArea();
         eventTextArea.setEditable(false);
-        eventTextArea.setPrefWidth(10); // Adjust the width as necessary
-        eventTextArea.setPrefRowCount(10); // Set the number of visible rows
-        eventTextArea.setWrapText(true); // Enable text wrapping
+        eventTextArea.setPrefWidth(10);
+        eventTextArea.setPrefRowCount(10);
+        eventTextArea.setWrapText(true);
 
-        // Get cities from GameMap
         ArrayList<City> cities = GameMap.getCities();
+        ArrayList<MountainRange> mountainRanges = GameMap.getMountainRanges();
 
-        // Find the capitol
         City capitol = null;
         for (City city : cities) {
             if (capitol == null || city.getPopulation() > capitol.getPopulation()) {
@@ -102,6 +98,22 @@ public class GameScreen extends Application {
             }
         }
         Objects.requireNonNull(capitol).setCapitol();
+
+        // Calculate the total population and party supports
+        for (City city : GameMap.getCities()) {
+            for (int i = 0; i < GameMap.parties.size(); i++) {
+                int supporters = 0;
+                supporters += (GameMap.parties.get(i).getSupportPercentage(city)/100) * city.getPopulation();
+                GameMap.parties.get(i).setSupporters(GameMap.parties.get(i).getSupporters() + supporters);
+            }
+        }
+
+        ArrayList<Party> sortedParties = new ArrayList<>(GameMap.parties);
+        Collections.sort(sortedParties, (party1, party2) -> {
+            double support1 = party1.getSupporters();
+            double support2 = party2.getSupporters();
+            return Double.compare(support2, support1); // Sort in descending order
+        });
 
         Label genLabel = new Label("Generation " + GameState.getGeneration());
         genLabel.setFont(new Font("Ancient", 60));
@@ -113,67 +125,115 @@ public class GameScreen extends Application {
         kingdomLabel.setTranslateX(721 - screenBounds.getWidth() / 2);
         kingdomLabel.setTranslateY(40 - screenBounds.getHeight() / 2);
         kingdomLabel.setTextAlignment(TextAlignment.LEFT);
+        DropShadow outlineEffect = new DropShadow();
+        outlineEffect.setColor(sortedParties.get(0).getColor());
+        outlineEffect.setRadius(1);
+        outlineEffect.setSpread(0.2);
+        kingdomLabel.setEffect(outlineEffect);
         root.getChildren().add(kingdomLabel);
 
-        // Add city names to the map
+        VBox partyContainer = new VBox();
+        partyContainer.setTranslateX(10);
+        partyContainer.setTranslateY(screenBounds.getHeight() / 2 - 400);
+        partyContainer.setSpacing(0);
+
+        int kingdomPopulation = 0;
+        for(int i = 0; i < GameMap.getCities().size(); i++){
+            kingdomPopulation += GameMap.getCities().get(i).getPopulation();
+        }
+
+        // Display party labels and support percentages
+        for (int i = 0; i < sortedParties.size(); i++) {
+            Party party = sortedParties.get(i);
+            String partyName1 = party.getName();
+            if (partyName1.startsWith("The ")) {
+                partyName1 = partyName1.substring(4); // Remove the leading "The "
+            }
+            Label partyLabel = new Label(partyName1);
+
+            partyLabel.setFont(Font.loadFont(getClass().getResourceAsStream("/Deutsch.ttf"), 16));
+            partyLabel.setTextFill(party.getColor());
+
+            String supportText = String.format("%.1f%%",((float)party.getSupporters()/(float)kingdomPopulation)*100);
+
+            // Add the support percentage text to the party label
+            partyLabel.setText(partyName1 + " - " + supportText);
+
+            // Add an outline to the party label
+            partyLabel.setStyle("-fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);");
+
+            partyContainer.getChildren().add(partyLabel);
+        }
+
+        root.getChildren().add(partyContainer);
+
         for (City city : cities) {
             String cityName = city.getName();
 
-            // Create a label for the city name
-            Label cityLabel = new Label(cityName);
-            cityLabel.setFont(new Font("Ancient", 32));
-
-            // Get the party with most support in the city
             Party mostSupportedParty = null;
-            for (Party party : GameMap.parties)
+            for (Party party : GameMap.parties) {
                 if (mostSupportedParty == null || party.getSupportPercentage(city) > mostSupportedParty.getSupportPercentage(city)) {
                     mostSupportedParty = party;
                 }
+            }
 
-            /// Create a text for the city name instead of a label
             Text cityText = new Text(cityName);
             cityText.setFont(new Font("Ancient", 32));
 
-            // Set the color of the text to the color of the party with most support
             if (mostSupportedParty != null) {
                 cityText.setFill(mostSupportedParty.getColor());
             }
 
-            // Add a stroke
             cityText.setStroke(Color.BLACK);
-            cityText.setStrokeWidth(0.5);  // Adjust the stroke width as necessary
-
-            // Position the text according to the city's coordinates
+            cityText.setStrokeWidth(0.5);
             cityText.setTranslateX(city.getX() - screenBounds.getWidth() / 2);
             cityText.setTranslateY(city.getY() - screenBounds.getHeight() / 2);
 
-            // Set on click event
             cityText.setOnMouseClicked(e -> new CityStatsDisplay(city).displayCityStats());
 
-            // Add the text to the root pane
             root.getChildren().add(cityText);
 
-            // Draw a red star for the capitol
             if (city == capitol) {
                 Polygon star = createStar(Color.MAROON, 17, 6, 0.5);
                 star.setTranslateX(city.getX() - screenBounds.getWidth() / 2);
-                star.setTranslateY(city.getY() - screenBounds.getHeight() / 2 + 40); // Adjust as necessary
+                star.setTranslateY(city.getY() - screenBounds.getHeight() / 2 + 40);
                 root.getChildren().add(star);
             }
         }
 
+        for (MountainRange mountainRange : mountainRanges) {
+            String mountainRangeName = mountainRange.getName();
+
+            Text mountainRangeText = new Text(mountainRangeName);
+            mountainRangeText.setFont(Font.loadFont(getClass().getResourceAsStream("/Deutsch.ttf"), mountainRange.getSize()));
+            mountainRangeText.setFill(rgb(140,140,140));
+            mountainRangeText.setStroke(Color.BLACK);
+            mountainRangeText.setStrokeWidth(0.65);
+
+            double x = mountainRange.getX(); // Get the x position of the mountain range
+            double y = mountainRange.getY(); // Get the y position of the mountain range
+            double rotation = mountainRange.getRotation(); // Get the rotation angle
+
+            mountainRangeText.setTranslateX(x - screenBounds.getWidth() / 2);
+            mountainRangeText.setTranslateY(y - screenBounds.getHeight() / 2);
+            mountainRangeText.setRotate(rotation);
+
+            root.getChildren().add(mountainRangeText);
+        }
+
+
         Image nextButtonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/next.png")));
         nextButton = new ImageView(nextButtonImage);
-        nextButton.setTranslateX(637); // Adjust the X coordinate as necessary
-        nextButton.setTranslateY(screenBounds.getHeight() - nextButtonImage.getHeight() + 100); // Adjust the Y coordinate as necessary
+        nextButton.setTranslateX(637);
+        nextButton.setTranslateY(screenBounds.getHeight() - nextButtonImage.getHeight() + 100);
         nextButton.setFitWidth(130);
         nextButton.setFitHeight(130);
         nextButton.setOnMouseClicked(e -> {
             if (currentEventIndex < events.size()) {
                 Event event = events.get(currentEventIndex);
-                displayEventDescription(event); // Call the updated method
+                displayEventDescription(event);
                 currentEventIndex++;
-                nextButton.setVisible(false); // Hide the button after clicking
+                nextButton.setVisible(false);
             }
         });
         root.getChildren().add(nextButton);
@@ -182,7 +242,6 @@ public class GameScreen extends Application {
         eventTextArea.appendText("Welcome to the Kingdom of " + GameMap.getKingdomName() + "!\n");
         root.getChildren().add(textBoxContainer);
 
-        // Create a scene and add the layout to it
         Scene scene = new Scene(root, screenBounds.getWidth(), screenBounds.getHeight());
 
         primaryStage.setScene(scene);
@@ -191,7 +250,7 @@ public class GameScreen extends Application {
 
     private Polygon createStar(Color color, double radius, double innerRadius, double rotation) {
         Polygon star = new Polygon();
-        double angle = 2 * Math.PI / 5; // Five points
+        double angle = 2 * Math.PI / 5;
 
         for (int i = 0; i < 10; i++) {
             double r = (i % 2 == 0) ? radius : innerRadius;
@@ -208,29 +267,23 @@ public class GameScreen extends Application {
     private void displayEventDescription(Event event) {
         String description = event.getDescription();
 
-        // Check if the cityName field is empty
         if (event.getCityName() == null && event.getLocation().equals("random_city")) {
-            // Choose a random city (not a capitol city) and assign it to cityName
             ArrayList<City> cities = GameMap.getCities();
             City randomCity = getRandomCity(cities);
             event.setCityName(randomCity.getName());
-            event.setLocation(randomCity.getName()); // Update the location string with the random city's name
-            createExclamationMark(randomCity); // Create exclamation mark for random city
+            event.setLocation(randomCity.getName());
+            createExclamationMark(randomCity);
         }
 
-        // Append the location to the description if applicable
         String location = event.getLocation();
 
         if (!event.getLocation().equals("whole_kingdom"))
             description += location;
 
-        // Display the updated description
         eventTextArea.appendText(description + "\n");
 
-        // Create a pause transition for the delay
         PauseTransition delay = new PauseTransition(Duration.seconds(3));
         delay.setOnFinished(e -> {
-            // Display the event window after the delay
             EventWindow eventWindow = new EventWindow(event);
             eventWindow.displayWindow();
         });
@@ -250,7 +303,7 @@ public class GameScreen extends Application {
         exclamationMark.setFont(Font.font("Arial", FontWeight.BOLD, 40));
         exclamationMark.setFill(Color.MAROON);
         exclamationMark.setTranslateX(city.getX() - root.getScene().getWidth() / 2);
-        exclamationMark.setTranslateY(city.getY() - root.getScene().getHeight() / 2 - 40); // Adjust as necessary
+        exclamationMark.setTranslateY(city.getY() - root.getScene().getHeight() / 2 - 40);
         root.getChildren().add(exclamationMark);
     }
 

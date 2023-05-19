@@ -4,6 +4,7 @@ import java.util.*;
 
 public class GameMap {
     private static ArrayList<City> cities = new ArrayList<>();
+    private static ArrayList<MountainRange> mountainRanges = new ArrayList<>();
     private static String kingdomName = "";
     private static GameMap instance;
     public static ArrayList<Party> parties = new ArrayList<>();
@@ -23,13 +24,15 @@ public class GameMap {
             "The Acme Party", "The Summit Party", "The Crest Party", "The Zenith Party"
     );
 
-
     public GameMap() {
         createCities();
     }
 
     public static ArrayList<City> getCities() {
         return cities;
+    }
+    public static ArrayList<MountainRange> getMountainRanges() {
+        return mountainRanges;
     }
 
     public static String getKingdomName() {
@@ -47,12 +50,9 @@ public class GameMap {
         return instance;
     }
 
-
     private void createCities() {
         setKingdomName();
         createParties(12);
-        for(int i = 0; i < parties.size(); i++)
-            System.out.println(parties.get(i).getName());
         City city1 = new City(0, 290, 170, parties);
         City city2 = new City(1, 200, 325, parties);
         City city3 = new City(2, 300, 470, parties);
@@ -60,7 +60,7 @@ public class GameMap {
         City city5 = new City(4, 522, 500, parties);
         City city6 = new City(5, 554, 335, parties);
         City city7 = new City(6, 700, 300, parties);
-        City city8 = new City(7, 717, 570, parties);
+        City city8 = new City(7, 700, 580, parties);
         City city9 = new City(8, 770, 175, parties);
         City city10 = new City(9, 925, 295, parties);
         City city11 = new City(10, 860, 500, parties);
@@ -68,6 +68,9 @@ public class GameMap {
         City city13 = new City(12, 1037, 530, parties);
         City city14 = new City(13, 1186, 442, parties);
         City city15 = new City(14, 1200, 300, parties);
+        MountainRange mr1 = new MountainRange(740,423,-23,26);
+        MountainRange mr2 = new MountainRange(800,580,56,17);
+        MountainRange mr3 = new MountainRange(1072,400,-43,20);
 
         city1.addConnection(new Connection(city2, "land"));
         city1.addConnection(new Connection(city4, "land"));
@@ -181,6 +184,10 @@ public class GameMap {
         cities.add(city13);
         cities.add(city14);
         cities.add(city15);
+
+        mountainRanges.add(mr1);
+        mountainRanges.add(mr2);
+        mountainRanges.add(mr3);
     }
 
     public void createParties(int number) {
@@ -190,7 +197,7 @@ public class GameMap {
         ArrayList<Party> parties = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             String name = shuffledNames.get(i);
-            Party party = new Party(name);
+            Party party = new Party(name,false);
             parties.add(party);
         }
         parties.add(Main.party);
