@@ -22,16 +22,4 @@ public class Decision {
         this.outcomes = outcomes;
     }
 
-    // Get the support adjustment value based on the decision's outcomes
-    public double getSupportAdjustment() {
-        double supportAdjustment = 0.0;
-        for (Outcome outcome : outcomes) {
-            if (outcome.isPositive()) {
-                supportAdjustment += 5;
-            } else {
-                supportAdjustment -= 5;
-            }
-        }
-        return supportAdjustment;
-    }
 }

@@ -5,7 +5,6 @@ public class Outcome {
     private int probability;
     private Affect kingdom_affects;
     private Affect affected_city_affects;
-    private boolean isPositive;
 
     public Affect getAdjacent_city_affects() {
         return adjacent_city_affects;
@@ -47,10 +46,6 @@ public class Outcome {
 
     public void setAffectedCityAffects(Affect affected_city_affects) {
         this.affected_city_affects = affected_city_affects;
-    }
-
-    public boolean isPositive() {
-        return isPositive;
     }
 
 }
