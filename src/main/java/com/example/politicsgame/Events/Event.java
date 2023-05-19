@@ -10,7 +10,7 @@ public class Event {
     private String description;
     private String location;
     private String cityName;
-    private ArrayList<Decision> decisions;
+    private ArrayList<Decision> decisions = new ArrayList<>();
 
     public String getName() {
         return name;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Decision {
     private String description;
-    private ArrayList<Outcome> outcomes;
+    private ArrayList<Outcome> outcomes = new ArrayList<>();
 
     public String getDescription() {
         return description;

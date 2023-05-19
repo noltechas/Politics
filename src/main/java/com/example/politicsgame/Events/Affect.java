@@ -1,7 +1,7 @@
 package com.example.politicsgame.Events;
 
 public class Affect {
-    private int positivity;
+    private int positive;
     private int influence;
     private int wealth;
     private int happiness;
@@ -9,13 +9,14 @@ public class Affect {
     private int knowledge;
     private int stability;
 
-    public int getPositivity() {
-        return positivity;
+    public int getPositive() {
+        return positive;
     }
 
-    public void setPositivity(int positivity){
-        this.positivity = positivity;
+    public void setPositive(int positive) {
+        this.positive = positive;
     }
+
 
     public int getInfluence() {
         return influence;

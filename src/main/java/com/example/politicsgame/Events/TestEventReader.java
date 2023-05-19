@@ -25,7 +25,7 @@ public class TestEventReader {
 
                         Affect kingdomAffects = outcome.getKingdomAffects();
                         System.out.println("\t\t\tKingdom Affects: "
-                                + "Positivity: " + kingdomAffects.getPositivity()
+                                + "Positivity: " + kingdomAffects.getPositive()
                                 + ", Influence: " + kingdomAffects.getInfluence()
                                 + ", Wealth: " + kingdomAffects.getWealth()
                                 + ", Happiness: " + kingdomAffects.getHappiness()
@@ -35,7 +35,7 @@ public class TestEventReader {
 
                         Affect cityAffects = outcome.getAffectedCityAffects();
                         System.out.println("\t\t\tAffected City Affects: "
-                                + "Positivity: " + cityAffects.getPositivity()
+                                + "Positivity: " + cityAffects.getPositive()
                                 + ", Influence: " + cityAffects.getInfluence()
                                 + ", Wealth: " + cityAffects.getWealth()
                                 + ", Happiness: " + cityAffects.getHappiness()
@@ -45,7 +45,7 @@ public class TestEventReader {
 
                         Affect adjacentAffects = outcome.getAdjacent_city_affects();
                         System.out.println("\t\t\tAdjacent City Affects: "
-                                + "Positivity: " + adjacentAffects.getPositivity()
+                                + "Positivity: " + adjacentAffects.getPositive()
                                 + ", Influence: " + adjacentAffects.getInfluence()
                                 + ", Wealth: " + adjacentAffects.getWealth()
                                 + ", Happiness: " + adjacentAffects.getHappiness()
