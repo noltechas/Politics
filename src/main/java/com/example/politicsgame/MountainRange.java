@@ -27,7 +27,6 @@ public class MountainRange {
 
     private int y;
     private int rotation;
-    private ArrayList<Connection> connections = new ArrayList<>();
 
     public MountainRange(int x, int y, int rotation, int size){
         this.name = generateName();

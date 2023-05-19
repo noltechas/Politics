@@ -2,6 +2,7 @@ package com.example.politicsgame;
 
 import com.example.politicsgame.Events.Decision;
 import com.example.politicsgame.Events.Event;
+import com.example.politicsgame.Events.ResolveEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +15,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class EventWindow {
     private static final double WINDOW_WIDTH = 600;
@@ -96,6 +99,27 @@ public class EventWindow {
         VBox.setMargin(chooseButton, new Insets(10, 0, 0, 0));
         VBox.setVgrow(chooseButton, Priority.NEVER);
         chooseButton.setAlignment(Pos.CENTER);
+
+        // Event handler for the chooseButton
+        chooseButton.setOnAction(event -> {
+            // Retrieve the current event from the GameScreen
+            Event currentEvent = GameScreen.getCurrentEvent();
+
+            // Find the corresponding Decision based on the decision text
+            Decision selectedDecision = null;
+            if (currentEvent != null) {
+                List<Decision> decisions = currentEvent.getDecisions();
+                for (Decision decisionObj : decisions) {
+                    if (decisionObj.getDescription().equals(decision)) {
+                        selectedDecision = decisionObj;
+                        break;
+                    }
+                }
+            }
+
+            // Call the decideEvent method in GameScreen and pass the selected Decision
+            ResolveEvent resolution = new ResolveEvent(currentEvent, selectedDecision);
+        });
 
         column.getChildren().addAll(decisionLabel, chooseButton);
         return column;

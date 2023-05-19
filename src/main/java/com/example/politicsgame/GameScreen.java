@@ -43,6 +43,10 @@ public class GameScreen extends Application {
     private StackPane root;
     private City affectedCity;
 
+    public static Event getCurrentEvent() {
+        return events.get(currentEventIndex);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Collections.shuffle(events);
@@ -168,7 +172,7 @@ public class GameScreen extends Application {
         root.getChildren().add(partyContainer);
 
         for (City city : cities) {
-            String cityName = city.getName();
+            String cityName = city.getName() + " " + (city.getI()+1);
 
             Party mostSupportedParty = null;
             for (Party party : GameMap.parties) {

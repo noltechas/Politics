@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 public class City {
     private boolean capitol = false;
     private CityPartySupport cityPartySupport;
-    private ArrayList<Connection> connections = new ArrayList<>();
     private String name;
     private static Set<String> usedNames = new HashSet<>();
+
+    private ArrayList<City> adjacentCities = new ArrayList<>();
+
     private String history;
 
     private int population;
@@ -79,14 +81,6 @@ public class City {
         this.y = y;
         // Initialize party support for this city
         this.cityPartySupport = new CityPartySupport(this, parties);
-    }
-
-    public void addConnection(Connection connection) {
-        connections.add(connection);
-    }
-
-    public List<Connection> getConnections() {
-        return connections;
     }
 
     public String getName() {
@@ -200,4 +194,19 @@ public class City {
         return cityName;
     }
 
+    public ArrayList<City> getAdjacentCities() {
+        return adjacentCities;
+    }
+
+    public void setAdjacentCities(ArrayList<City> adjacentCities) {
+        this.adjacentCities = adjacentCities;
+    }
+
+    public void addAdjacentCity(City city){
+        this.adjacentCities.add(city);
+    }
+
+    public int getI() {
+        return i;
+    }
 }

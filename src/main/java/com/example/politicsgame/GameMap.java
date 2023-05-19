@@ -72,102 +72,70 @@ public class GameMap {
         MountainRange mr2 = new MountainRange(800,580,56,17);
         MountainRange mr3 = new MountainRange(1072,400,-43,20);
 
-        city1.addConnection(new Connection(city2, "land"));
-        city1.addConnection(new Connection(city4, "land"));
-        city1.addConnection(new Connection(city3, "land"));
+        city1.addAdjacentCity(city2);
+        city1.addAdjacentCity(city4);
+        city1.addAdjacentCity(city6);
+        city1.addAdjacentCity(city9);
 
-        city2.addConnection(new Connection(city4, "land"));
-        city2.addConnection(new Connection(city1, "land"));
-        city2.addConnection(new Connection(city6, "water"));
-        city2.addConnection(new Connection(city9, "water"));
+        city2.addAdjacentCity(city1);
+        city2.addAdjacentCity(city4);
+        city2.addAdjacentCity(city3);
 
-        city3.addConnection(new Connection(city1, "land"));
-        city3.addConnection(new Connection(city4, "land"));
-        city3.addConnection(new Connection(city5, "land"));
+        city3.addAdjacentCity(city2);
+        city3.addAdjacentCity(city4);
+        city3.addAdjacentCity(city5);
 
-        city4.addConnection(new Connection(city2, "land"));
-        city4.addConnection(new Connection(city1, "land"));
-        city4.addConnection(new Connection(city3, "land"));
-        city4.addConnection(new Connection(city5, "land"));
-        city4.addConnection(new Connection(city6, "land"));
+        city4.addAdjacentCity(city1);
+        city4.addAdjacentCity(city2);
+        city4.addAdjacentCity(city3);
+        city4.addAdjacentCity(city5);
+        city4.addAdjacentCity(city6);
 
-        city5.addConnection(new Connection(city3, "land"));
-        city5.addConnection(new Connection(city4, "land"));
-        city5.addConnection(new Connection(city6, "land"));
-        city5.addConnection(new Connection(city8, "land"));
-        city5.addConnection(new Connection(city7, "mountains"));
-        city5.addConnection(new Connection(city11, "mountains"));
+        city5.addAdjacentCity(city3);
+        city5.addAdjacentCity(city4);
+        city5.addAdjacentCity(city6);
+        city5.addAdjacentCity(city8);
 
-        city6.addConnection(new Connection(city4, "land"));
-        city6.addConnection(new Connection(city5, "land"));
-        city6.addConnection(new Connection(city7, "land"));
-        city6.addConnection(new Connection(city9, "water"));
-        city6.addConnection(new Connection(city8, "mountains"));
-        city6.addConnection(new Connection(city11, "mountains"));
-        city6.addConnection(new Connection(city10, "mountains"));
+        city6.addAdjacentCity(city4);
+        city6.addAdjacentCity(city5);
+        city6.addAdjacentCity(city7);
+        city6.addAdjacentCity(city9);
 
-        city7.addConnection(new Connection(city6, "land"));
-        city7.addConnection(new Connection(city10, "land"));
-        city7.addConnection(new Connection(city9, "water"));
-        city7.addConnection(new Connection(city5, "mountains"));
-        city7.addConnection(new Connection(city8, "mountains"));
-        city7.addConnection(new Connection(city11, "mountains"));
-        city7.addConnection(new Connection(city12, "mountains"));
+        city7.addAdjacentCity(city6);
+        city7.addAdjacentCity(city9);
+        city7.addAdjacentCity(city10);
 
-        city8.addConnection(new Connection(city5, "land"));
-        city8.addConnection(new Connection(city11, "land"));
-        city8.addConnection(new Connection(city6, "mountians"));
-        city8.addConnection(new Connection(city7, "mountians"));
-        city8.addConnection(new Connection(city10, "mountians"));
-        city8.addConnection(new Connection(city12, "mountians"));
+        city8.addAdjacentCity(city5);
+        city8.addAdjacentCity(city11);
 
-        city9.addConnection(new Connection(city2, "water"));
-        city9.addConnection(new Connection(city6, "water"));
-        city9.addConnection(new Connection(city7, "water"));
-        city9.addConnection(new Connection(city10, "water"));
-        city9.addConnection(new Connection(city15, "water"));
+        city9.addAdjacentCity(city1);
+        city9.addAdjacentCity(city6);
+        city9.addAdjacentCity(city7);
+        city9.addAdjacentCity(city10);
+        city9.addAdjacentCity(city15);
 
-        city10.addConnection(new Connection(city7, "land"));
-        city10.addConnection(new Connection(city12, "land"));
-        city10.addConnection(new Connection(city15, "land"));
-        city10.addConnection(new Connection(city9, "water"));
-        city10.addConnection(new Connection(city14, "mountains"));
-        city10.addConnection(new Connection(city13, "mountains"));
-        city10.addConnection(new Connection(city11, "mountains"));
-        city10.addConnection(new Connection(city8, "mountains"));
+        city10.addAdjacentCity(city7);
+        city10.addAdjacentCity(city9);
+        city10.addAdjacentCity(city12);
+        city10.addAdjacentCity(city15);
 
-        city11.addConnection(new Connection(city8, "land"));
-        city11.addConnection(new Connection(city12, "land"));
-        city11.addConnection(new Connection(city13, "land"));
-        city11.addConnection(new Connection(city5, "mountains"));
-        city11.addConnection(new Connection(city6, "mountains"));
-        city11.addConnection(new Connection(city7, "mountains"));
-        city11.addConnection(new Connection(city10, "mountains"));
+        city11.addAdjacentCity(city8);
+        city11.addAdjacentCity(city12);
+        city11.addAdjacentCity(city13);
 
-        city12.addConnection(new Connection(city10, "land"));
-        city12.addConnection(new Connection(city11, "land"));
-        city12.addConnection(new Connection(city13, "land"));
-        city12.addConnection(new Connection(city14, "mountains"));
-        city12.addConnection(new Connection(city15, "mountains"));
-        city12.addConnection(new Connection(city7, "mountains"));
-        city12.addConnection(new Connection(city8, "mountains"));
+        city12.addAdjacentCity(city10);
+        city12.addAdjacentCity(city11);
+        city12.addAdjacentCity(city13);
 
-        city13.addConnection(new Connection(city11, "land"));
-        city13.addConnection(new Connection(city12, "land"));
-        city13.addConnection(new Connection(city14, "land"));
-        city13.addConnection(new Connection(city10, "mountains"));
-        city13.addConnection(new Connection(city15, "mountains"));
+        city13.addAdjacentCity(city11);
+        city13.addAdjacentCity(city12);
+        city13.addAdjacentCity(city14);
 
-        city14.addConnection(new Connection(city13, "land"));
-        city14.addConnection(new Connection(city15, "land"));
-        city14.addConnection(new Connection(city12, "mountains"));
-        city14.addConnection(new Connection(city10, "mountains"));
+        city14.addAdjacentCity(city13);
+        city14.addAdjacentCity(city15);
 
-        city15.addConnection(new Connection(city10, "land"));
-        city15.addConnection(new Connection(city14, "land"));
-        city15.addConnection(new Connection(city9, "water"));
-        city15.addConnection(new Connection(city12, "mountains"));
-        city15.addConnection(new Connection(city13, "mountains"));
+        city15.addAdjacentCity(city10);
+        city15.addAdjacentCity(city14);
 
         cities.add(city1);
         cities.add(city2);
@@ -205,52 +173,6 @@ public class GameMap {
         GameMap.parties.addAll(parties);
     }
 
-    public static List<City> shortestPath(City start, City end) {
-        Map<City, Double> distances = new HashMap<>();
-        Map<City, City> previous = new HashMap<>();
-        PriorityQueue<City> queue = new PriorityQueue<>();
-
-        for (City city : GameMap.cities) {
-            distances.put(city, Double.POSITIVE_INFINITY);
-            previous.put(city, null);
-        }
-
-        distances.put(start, 0.0);
-        queue.add(start);
-
-        while (!queue.isEmpty()) {
-            City current = queue.poll();
-
-            if (current == end) {
-                break;
-            }
-
-            double currentDistance = distances.getOrDefault(current, Double.POSITIVE_INFINITY);
-
-            for (Connection connection : current.getConnections()) {
-                City neighbor = connection.getCity();
-                double weight = getWeight(connection.getConnectionType());
-
-                double distance = currentDistance + weight;
-                if (distance < distances.getOrDefault(neighbor, Double.POSITIVE_INFINITY)) {
-                    distances.put(neighbor, distance);
-                    previous.put(neighbor, current);
-                    queue.add(neighbor);
-                }
-            }
-        }
-
-        List<City> path = new ArrayList<>();
-        City current = end;
-        while (current != null) {
-            path.add(current);
-            current = previous.get(current);
-        }
-
-        Collections.reverse(path);
-
-        return path;
-    }
 
     private static double getWeight(String connectionType) {
         switch (connectionType) {
