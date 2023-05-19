@@ -231,21 +231,6 @@ public class City {
     }
 
     public void scalePartySupportPercentages() {
-        List<Double> supportPercentages = cityPartySupport.getSupportPercentages();
-        int partyCount = supportPercentages.size();
 
-        // Calculate the sum of all support percentages
-        double sum = 0.0;
-        for (Double percentage : supportPercentages) {
-            sum += percentage;
-        }
-
-        // Scale the support percentages to ensure they sum up to 100
-        if (sum != 100.0) {
-            double scaleFactor = 100.0 / sum;
-            for (int i = 0; i < partyCount; i++) {
-                supportPercentages.set(i, supportPercentages.get(i) * scaleFactor);
-            }
-        }
     }
 }

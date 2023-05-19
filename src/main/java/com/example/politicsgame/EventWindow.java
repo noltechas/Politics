@@ -26,13 +26,14 @@ public class EventWindow {
     private static final double BUTTON_HEIGHT = 40;
 
     private Event event;
+    private Stage window; // Stage instance to represent the window
 
-    public EventWindow(Event event) {
+    public EventWindow(Event event, Stage window) {
         this.event = event;
+        this.window = window;
     }
 
     public void displayWindow() {
-        Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(event.getName());
         window.setMinWidth(WINDOW_WIDTH);
@@ -119,10 +120,12 @@ public class EventWindow {
 
             // Call the decideEvent method in GameScreen and pass the selected Decision
             ResolveEvent resolution = new ResolveEvent(currentEvent, selectedDecision);
+            GameScreen.refreshMapScreen();
+
+            window.close(); // Close the event window
         });
 
         column.getChildren().addAll(decisionLabel, chooseButton);
         return column;
     }
-
 }

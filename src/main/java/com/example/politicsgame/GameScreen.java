@@ -5,6 +5,7 @@ import com.example.politicsgame.Events.EventReader;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -38,9 +40,9 @@ public class GameScreen extends Application {
     private static ArrayList<Event> events = EventReader.readEventsFromJson("src/main/resources/events.json");
     private static int currentEventIndex = 0;
 
-    private TextArea eventTextArea;
+    private static TextArea eventTextArea;
     private ImageView nextButton;
-    private StackPane root;
+    private static StackPane root;
     private City affectedCity;
 
     public static Event getCurrentEvent() {
@@ -225,7 +227,6 @@ public class GameScreen extends Application {
             root.getChildren().add(mountainRangeText);
         }
 
-
         Image nextButtonImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/next.png")));
         nextButton = new ImageView(nextButtonImage);
         nextButton.setTranslateX(637);
@@ -235,7 +236,7 @@ public class GameScreen extends Application {
         nextButton.setOnMouseClicked(e -> {
             if (currentEventIndex < events.size()) {
                 Event event = events.get(currentEventIndex);
-                displayEventDescription(event);
+                displayEventDescription(event); // Pass primaryStage as eventWindowStage
                 currentEventIndex++;
                 nextButton.setVisible(false);
             }
@@ -269,6 +270,9 @@ public class GameScreen extends Application {
     }
 
     private void displayEventDescription(Event event) {
+        Stage eventWindowStage = new Stage();
+        eventWindowStage.initModality(Modality.APPLICATION_MODAL);
+        eventWindowStage.setTitle(event.getName());
         String description = event.getDescription();
 
         if (event.getCityName() == null && event.getLocation().equals("random_city")) {
@@ -288,7 +292,7 @@ public class GameScreen extends Application {
 
         PauseTransition delay = new PauseTransition(Duration.seconds(3));
         delay.setOnFinished(e -> {
-            EventWindow eventWindow = new EventWindow(event);
+            EventWindow eventWindow = new EventWindow(event, eventWindowStage);
             eventWindow.displayWindow();
         });
         delay.play();
@@ -309,6 +313,86 @@ public class GameScreen extends Application {
         exclamationMark.setTranslateX(city.getX() - root.getScene().getWidth() / 2);
         exclamationMark.setTranslateY(city.getY() - root.getScene().getHeight() / 2 - 40);
         root.getChildren().add(exclamationMark);
+    }
+
+    public static void refreshMapScreen() {
+        ArrayList<City> cities = GameMap.getCities();
+
+        // Update city text colors and strokes based on party support
+        for (City city : cities) {
+            Text cityText = findCityText(city);
+            Party mostSupportedParty = getMostSupportedParty(city);
+
+            if (mostSupportedParty != null) {
+                cityText.setFill(mostSupportedParty.getColor());
+            }
+
+            cityText.setStroke(Color.BLACK);
+            cityText.setStrokeWidth(0.5);
+        }
+
+        // Refresh the list of cities in the top left
+        VBox partyContainer = (VBox) root.getChildren().get(3);
+        partyContainer.getChildren().clear();
+
+        int kingdomPopulation = 0;
+        for (int i = 0; i < cities.size(); i++) {
+            kingdomPopulation += cities.get(i).getPopulation();
+        }
+
+        ArrayList<Party> sortedParties = new ArrayList<>(GameMap.parties);
+        Collections.sort(sortedParties, (party1, party2) -> {
+            double support1 = party1.calculateKingdomWideSupporters(party1, cities);
+            double support2 = party2.calculateKingdomWideSupporters(party2, cities);
+            return Double.compare(support2, support1); // Sort in descending order
+        });
+
+        for (int i = 0; i < sortedParties.size(); i++) {
+            Party party = sortedParties.get(i);
+            String partyName1 = party.getName();
+            if (partyName1.startsWith("The ")) {
+                partyName1 = partyName1.substring(4); // Remove the leading "The "
+            }
+            Label partyLabel = new Label(partyName1);
+
+            partyLabel.setFont(Font.loadFont(GameScreen.class.getResourceAsStream("/Deutsch.ttf"), 16));
+            partyLabel.setTextFill(party.getColor());
+
+            String supportText = String.format("%.1f%%",((float)party.getSupporters()/(float)kingdomPopulation)*100);
+
+            // Add the support percentage text to the party label
+            partyLabel.setText(partyName1 + " - " + supportText);
+
+            // Add an outline to the party label
+            partyLabel.setStyle("-fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);");
+
+            partyContainer.getChildren().add(partyLabel);
+        }
+    }
+
+    private static Text findCityText(City city) {
+        for (Node node : root.getChildren()) {
+            if (node instanceof Text && ((Text) node).getText().equals(city.getName())) {
+                return (Text) node;
+            }
+        }
+        return null;
+    }
+
+    private static Party getMostSupportedParty(City city) {
+        Party mostSupportedParty = null;
+
+        for (Party party : GameMap.parties) {
+            if (mostSupportedParty == null || party.getSupportPercentage(city) > mostSupportedParty.getSupportPercentage(city)) {
+                mostSupportedParty = party;
+            }
+        }
+
+        return mostSupportedParty;
+    }
+
+    public static void addText(String text) {
+        eventTextArea.appendText(text + "\n");
     }
 
     public static void main(String[] args) {

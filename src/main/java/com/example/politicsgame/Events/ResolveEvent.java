@@ -1,9 +1,6 @@
 package com.example.politicsgame.Events;
 
-import com.example.politicsgame.City;
-import com.example.politicsgame.GameMap;
-import com.example.politicsgame.Main;
-import com.example.politicsgame.Party;
+import com.example.politicsgame.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,7 +45,7 @@ public class ResolveEvent {
                     winningDecision = event.getDecisions().get(i);
             }
 
-            System.out.println("The kingdom has decided to " + winningDecision.getDescription());
+            GameScreen.addText("The kingdom has decided to " + winningDecision.getDescription());
 
             ArrayList<Outcome> possibleOutcomes = new ArrayList<>();
             for(int i = 0; i < winningDecision.getOutcomes().size(); i++){
@@ -60,8 +57,7 @@ public class ResolveEvent {
             int randomIndex = random.nextInt(winningDecision.getOutcomes().size());
             winningOutcome = winningDecision.getOutcomes().get(randomIndex);
 
-            System.out.println("The outcome is: " + winningOutcome.getDescription());
-            System.out.println("The affect of this is: " + winningOutcome.getKingdomAffects().getPositive());
+            GameScreen.addText(winningOutcome.getDescription());
 
             // Adjust party support based on outcome
             for(int i = 0; i < GameMap.parties.size(); i++){
