@@ -102,8 +102,8 @@ public class EventWindow {
 
         // Event handler for the chooseButton
         chooseButton.setOnAction(event -> {
-            // Retrieve the current event from the GameScreen
-            Event currentEvent = GameScreen.getCurrentEvent();
+            // Retrieve the current event from the EventWindow
+            Event currentEvent = this.event;
 
             // Find the corresponding Decision based on the decision text
             Decision selectedDecision = null;

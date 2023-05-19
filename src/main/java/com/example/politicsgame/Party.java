@@ -13,6 +13,7 @@ public class Party {
     private Map<City, Double> citySupport;
     private Color color;
     private boolean isPlayerParty;
+    private Decision currentDecision;
 
     public Party(String name, boolean isPlayerParty) {
         this.name = name;
@@ -101,5 +102,17 @@ public class Party {
 
     public void setSupporters(int supporters) {
         this.supporters = supporters;
+    }
+
+    public boolean playerParty(){
+        return isPlayerParty;
+    }
+
+    public Decision getCurrentDecision() {
+        return currentDecision;
+    }
+
+    public void setCurrentDecision(Decision currentDecision) {
+        this.currentDecision = currentDecision;
     }
 }

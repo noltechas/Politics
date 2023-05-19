@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Decision {
     private String description;
+    private int votes = 0;
     private ArrayList<Outcome> outcomes = new ArrayList<>();
-
     public String getDescription() {
         return description;
     }
@@ -22,4 +22,15 @@ public class Decision {
         this.outcomes = outcomes;
     }
 
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+    public void addVotes(int votes) {
+        this.votes += votes;
+    }
 }

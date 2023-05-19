@@ -172,7 +172,7 @@ public class GameScreen extends Application {
         root.getChildren().add(partyContainer);
 
         for (City city : cities) {
-            String cityName = city.getName() + " " + (city.getI()+1);
+            String cityName = city.getName();
 
             Party mostSupportedParty = null;
             for (Party party : GameMap.parties) {

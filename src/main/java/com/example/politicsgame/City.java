@@ -209,4 +209,43 @@ public class City {
     public int getI() {
         return i;
     }
+
+    // Adjust party support for a given party in the city
+    public void updatePartySupport(Party party, int supportChange) {
+        // Retrieve the current party support for the given party
+        double currentSupport = cityPartySupport.getSupportPercentages().get(cityPartySupport.getParties().indexOf(party));
+
+        // Update the party support with the specified change
+        double newSupport = currentSupport + supportChange;
+        cityPartySupport.getSupportPercentages().set(cityPartySupport.getParties().indexOf(party), (double) newSupport);
+
+        // Make sure the support stays within the valid range of 0 to 100
+        if (newSupport < 0) {
+            newSupport = 0;
+        } else if (newSupport > 100) {
+            newSupport = 100;
+        }
+
+        // Update the party support in the Party object as well
+        party.addCitySupport(this, newSupport);
+    }
+
+    public void scalePartySupportPercentages() {
+        List<Double> supportPercentages = cityPartySupport.getSupportPercentages();
+        int partyCount = supportPercentages.size();
+
+        // Calculate the sum of all support percentages
+        double sum = 0.0;
+        for (Double percentage : supportPercentages) {
+            sum += percentage;
+        }
+
+        // Scale the support percentages to ensure they sum up to 100
+        if (sum != 100.0) {
+            double scaleFactor = 100.0 / sum;
+            for (int i = 0; i < partyCount; i++) {
+                supportPercentages.set(i, supportPercentages.get(i) * scaleFactor);
+            }
+        }
+    }
 }
